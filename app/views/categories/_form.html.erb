@@ -1,0 +1,24 @@
+<%= form_for @category do |f| %>
+  <% if @category.errors.any? %>
+  <div id="error_explanation" class="alert alert-danger">
+    <strong><%= pluralize(@category.errors.count, t('error')) %> <%= t('category_errortext') %></strong>
+    <ul>
+    <% @category.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= f.text_field :title, :class => "form-control", :placeholder => :title, :required => "true" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.text_field :color, :class => "form-control", :placeholder => :color, :required => "true" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.submit t('action_updatecategory'), :class => "btn btn-success btn-raised" %>
+  </div>
+<% end %>

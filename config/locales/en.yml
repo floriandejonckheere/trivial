@@ -20,4 +20,21 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  error: "error"
+
+  title_cardsets: "Cardsets"
+  title_categories: "Categories"
+  
+  title_nocardsets: "No cardsets defined"
+  text_nocardsets: "You have not created any cardsets."
+  link_nocardsets: "Click here to create a cardset."
+  
+  title_nocategories: "No categories defined"
+  text_nocategories: "You have not created any categories."
+  link_nocategories: "Click here to manage your categories."
+  
+  category_errortext: "prohibited this category from being saved"
+  
+  action_updatecategory: "Update category"
+  
+  action_signout: "Sign out"

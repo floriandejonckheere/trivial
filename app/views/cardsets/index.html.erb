@@ -1,0 +1,16 @@
+<div class="row">
+  <div class="col-lg-8 col-lg-offset-2">
+    <% if @cardsets.size != 0 %>
+    <div class="panel panel-default">
+      <div class="panel-body">
+        CardSets
+      </div>
+    </div>
+    <% else %>
+    <div class="alert alert-warning">
+        <h4><%= t('title_nocardsets') %></h4>
+        <p><%= t('text_nocardsets') %> <strong><%= link_to t('link_nocardsets'), new_cardset_path %></strong></p>
+    </div>
+    <% end %>
+  </div>
+</div>

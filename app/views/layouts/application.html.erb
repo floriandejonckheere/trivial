@@ -8,7 +8,30 @@
 </head>
 <body>
 
-<%= yield %>
+<nav class="navbar navbar-warning">
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-warning-collapse">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" href="javascript:void(0)">Trivial</a>
+  </div>
+  <div class="navbar-collapse collapse navbar-warning-collapse">
+    <ul class="nav navbar-nav">
+      <li><%= nav_link(t('title_cardsets'), cardsets_path) %></li>
+      <li><%= nav_link(t('title_categories'), categories_path) %></li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+      <li><a href="/signout"><%= t('action_signout') %></a></li>
+    </ul>
+  </div>
+</nav>
+<main>
+  <div class="container">
+    <%= yield %>
+  </div>
+</main>
 
 </body>
 </html>
