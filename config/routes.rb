@@ -1,11 +1,8 @@
 Rails.application.routes.draw do
 
   resources :cardsets do
-    resource :cards
+    resources :cards
   end
 
-  resource :categories
-
-  root "cardsets#index"
-
+  resources :categories
 end

@@ -1,0 +1,33 @@
+<div class="row">
+  <div class="col-lg-8 col-lg-offset-2">
+    <% if @categories.size != 0 %>
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <table class="table">
+          <thead>
+            <th><%= t('title_title') %></th>
+            <th><%= t('title_color') %></th>
+            <th><%= t('title_actions') %></th>
+          </thead>
+          <tbody>
+          <% @categories.each do |category| %>
+            <tr>
+              <td><%= category.title %></td>
+              <td><%= category.color %></td>
+              <td>
+                <%= link_to t('action_edit'), edit_category_path(category) %>
+              </td>
+            </tr>
+          <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <% else %>
+    <div class="alert alert-warning">
+        <h4><%= t('title_nocategories') %></h4>
+        <p><%= t('text_nocategories') %> <strong><%= link_to t('link_nocategories'), new_cardset_path %></strong></p>
+    </div>
+    <% end %>
+  </div>
+</div>

@@ -16,3 +16,7 @@
  *= require bootstrap-material-design/dist/css/ripples.min
  *= require bootstrap-material-design/dist/css/material-wfont.min
  */
+
+.panel-padding {
+  padding:  20px;
+}

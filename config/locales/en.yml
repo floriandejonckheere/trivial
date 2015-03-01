@@ -24,6 +24,9 @@ en:
 
   title_cardsets: "Cardsets"
   title_categories: "Categories"
+  title_title: "Title"
+  title_color: "Color"
+  title_actions: "Actions"
   
   title_nocardsets: "No cardsets defined"
   text_nocardsets: "You have not created any cardsets."
@@ -31,10 +34,13 @@ en:
   
   title_nocategories: "No categories defined"
   text_nocategories: "You have not created any categories."
-  link_nocategories: "Click here to manage your categories."
+  link_nocategories: "Click here to create a new category."
+  
+  title_editcategory: "Edit category"
   
   category_errortext: "prohibited this category from being saved"
   
   action_updatecategory: "Update category"
+  action_edit: "Edit"
   
   action_signout: "Sign out"
