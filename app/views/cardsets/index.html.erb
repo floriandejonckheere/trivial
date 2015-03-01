@@ -1,3 +1,7 @@
+<%= link_to new_cardset_path, :class => "btn btn-fab btn-raised btn-material-blue btn-navbar" do %>
+  <i class="mdi-content-add text-white"></i>
+<% end %>
+
 <div class="row">
   <div class="col-lg-8 col-lg-offset-2">
     <% if Category.all.size == 0 %>
@@ -6,35 +10,31 @@
         <p><%= t('text_nocategories') %> <strong><%= link_to t('link_nocategories'), new_category_path %></strong></p>
     </div>
     <% end %>
-    <% if @cardsets.size != 0 %>
-    <div class="panel panel-padding panel-default">
-      <div class="panel-body">
-        <table class="table">
-          <thead>
-            <th><%= t('title_title') %></th>
-            <th><%= t('title_actions') %></th>
-          </thead>
-          <tbody>
-          <% @cardsets.each do |cardset| %>
-            <tr>
-              <td class="td-fill"><%= link_to cardset.title, cardset_path(cardset) %></td>
-              <td>
-                <%= link_to t('action_edit'), edit_cardset_path(cardset) %>
-                <%= link_to t('action_delete'), cardset_path(cardset),
+    <% if Cardset.all.size != 0 %>
+    <div class="row">
+      <% Cardset.all.each do |cardset| %>
+        <div class="col-lg-6">
+          <div class="well">
+            <div class="panel-body text-center">
+              <div>
+                <h4><%= cardset.title %></h4>
+                <small><em><%= cardset.cards.size %> <%= :cards %></em></small>
+              </div>
+              <%= link_to t('action_show'), cardset_path(cardset), :class => "btn btn-flat btn-xs" %>
+              <%= link_to t('action_edit'), edit_cardset_path(cardset), :class => "btn btn-flat btn-xs" %>
+              <%= link_to t('action_delete'), cardset_path(cardset),
                       method: :delete,
-                      data: { confirm: t('text_confirmdelete') } %>
-              </td>
-            </tr>
-          <% end %>
-          </tbody>
-        </table>
-        <%= link_to t('cardset_action_add'), new_cardset_path, :class => "btn btn-primary" %>
-      </div>
+                      data: { confirm: t('text_confirmdelete') },
+                      :class => "btn btn-flat btn-danger btn-xs" %>
+            </div>
+          </div>
+        </div>
+      <% end %>
     </div>
     <% else %>
     <div class="alert alert-warning">
-        <h4><%= t('title_nocardsets') %></h4>
-        <p><%= t('text_nocardsets') %> <strong><%= link_to t('link_nocardsets'), new_cardset_path %></strong></p>
+      <h4><%= t('title_nocardsets') %></h4>
+      <p><%= t('text_nocardsets') %> <strong><%= link_to t('link_nocardsets'), new_cardset_path %></strong></p>
     </div>
     <% end %>
   </div>

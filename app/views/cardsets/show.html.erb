@@ -1,21 +1,33 @@
+<%= link_to new_cardset_card_path(@cardset), :class => "btn btn-fab btn-raised btn-material-blue btn-navbar" do %>
+  <i class="mdi-content-add text-white"></i>
+<% end %>
+
 <div class="row">
   <div class="col-lg-8 col-lg-offset-2">
-    <% if @cardset.cards.size != 0 %>
-    <div class="panel panel-padding panel-default">
-      <div class="panel-body">
-        <% @cardset.cards.each do |card| %>
-        <p>
-          <%= card.question %> (<%= card.answer %>)
-        </p>
-        <% end %>
-        <%= link_to t('cards_action_add'), new_cardset_card_path(@cardset), :class => "btn btn-primary" %>
+  <% if Category.all.size != 0 %>
+  <div class="row">
+    <% Category.all.each do |category| %>
+      <% if @cardset.cards.where(:category_id => category.id).any? %>
+      <div class="col-lg-6">
+        <div class="well text-white well-material-<%= category.color %>">
+          <div class="panel-body text-center">
+            <div>
+              <h4><%= category.title %></h4>
+              <small><em><%= @cardset.cards.where(:category_id => category.id).size %> <%= :cards %></em></small>
+            </div>
+            <a href="#" class="btn btn-flat btn-xs text-white disabled">SHOW</a>
+            <a href="#" class="btn btn-flat btn-xs text-white disabled">EDIT</a>
+          </div>
+        </div>
       </div>
-    </div>
-    <% else %>
-    <div class="alert alert-warning">
-        <h4><%= t('title_nocards') %></h4>
-        <p><%= t('text_nocards') %> <strong><%= link_to t('link_nocards'), new_cardset_card_path(@cardset) %></strong></p>
-    </div>
+      <% end %>
     <% end %>
+  </div>
+  <% else %>
+  <div class="alert alert-warning">
+      <h4><%= t('title_nocategories') %></h4>
+      <p><%= t('text_nocategories') %> <strong><%= link_to t('link_nocategories'), new_category_path %></strong></p>
+  </div>
+  <% end %>
   </div>
 </div>

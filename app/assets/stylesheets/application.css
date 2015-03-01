@@ -33,3 +33,15 @@ td {
 .margin-top-md {
   margin-top: 30px;
 }
+
+.text-white {
+  color: white !important;
+}
+
+.btn-navbar {
+  position: absolute !important;
+  right: 10%;
+  top: 30px !important;
+
+  z-index: 1;
+}

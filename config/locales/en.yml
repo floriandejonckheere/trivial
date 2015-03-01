@@ -40,20 +40,17 @@ en:
   text_nocards: "You have not created any cards."
   link_nocards: "Click here to create a new card."
   
-  category_action_add: "Add category"
-  category_action_update: "Update category"
   category_errortext: "prohibited this category from being saved"
   
-  cardset_action_add: "Add cardset"
-  cardset_action_update: "Update cardset"
   cardset_errortext: "prohibited this set from being saved"
   
-  card_action_add: "Add card"
-  card_action_update: "Update card"
   card_errortext: "prohibited this card from being saved"
 
-  text_confirmdelete: "Are you sure?"
+  text_confirmdelete: "Are you sure you wish to continue? This will irreversibly delete all dependent cards!"
 
+  action_add: "Add"
+  action_show: "Show"
   action_edit: "Edit"
+  action_update: "Update"
   action_delete: "Delete"
   action_signout: "Sign out"

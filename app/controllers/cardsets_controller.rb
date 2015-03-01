@@ -1,7 +1,6 @@
 class CardsetsController < ApplicationController
 
   def index
-    @cardsets = Cardset.all
   end
 
   def new

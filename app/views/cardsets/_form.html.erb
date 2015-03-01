@@ -14,5 +14,9 @@
 </div>
 
 <div class="form-group">
-  <%= f.submit t('cardset_action_update'), :class => "btn btn-success btn-raised" %>
+  <% if params[:action] != 'new' %>
+  <%= f.submit t('action_update'), :class => "btn btn-success btn-raised" %>
+  <% else %>
+  <%= f.submit t('action_add'), :class => "btn btn-success btn-raised" %>
+  <% end %>
 </div>
