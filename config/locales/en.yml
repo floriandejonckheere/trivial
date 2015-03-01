@@ -28,19 +28,32 @@ en:
   title_color: "Color"
   title_actions: "Actions"
   
-  title_nocardsets: "No cardsets defined"
-  text_nocardsets: "You have not created any cardsets."
-  link_nocardsets: "Click here to create a cardset."
-  
   title_nocategories: "No categories defined"
   text_nocategories: "You have not created any categories."
   link_nocategories: "Click here to create a new category."
   
-  title_editcategory: "Edit category"
+  title_nocardsets: "No cardsets defined"
+  text_nocardsets: "You have not created any cardsets."
+  link_nocardsets: "Click here to create a cardset."
   
+  title_nocards: "No cards defined"
+  text_nocards: "You have not created any cards."
+  link_nocards: "Click here to create a new card."
+  
+  category_action_add: "Add category"
+  category_action_update: "Update category"
   category_errortext: "prohibited this category from being saved"
   
-  action_updatecategory: "Update category"
-  action_edit: "Edit"
+  cardset_action_add: "Add cardset"
+  cardset_action_update: "Update cardset"
+  cardset_errortext: "prohibited this set from being saved"
   
+  card_action_add: "Add card"
+  card_action_update: "Update card"
+  card_errortext: "prohibited this card from being saved"
+
+  text_confirmdelete: "Are you sure?"
+
+  action_edit: "Edit"
+  action_delete: "Delete"
   action_signout: "Sign out"

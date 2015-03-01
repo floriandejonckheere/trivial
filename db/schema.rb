@@ -13,12 +13,6 @@
 
 ActiveRecord::Schema.define(version: 20150227175334) do
 
-  create_table "card_sets", force: :cascade do |t|
-    t.text     "title"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "cards", force: :cascade do |t|
     t.text     "question"
     t.text     "answer"
@@ -30,6 +24,12 @@ ActiveRecord::Schema.define(version: 20150227175334) do
 
   add_index "cards", ["cardset_id"], name: "index_cards_on_cardset_id"
   add_index "cards", ["category_id"], name: "index_cards_on_category_id"
+
+  create_table "cardsets", force: :cascade do |t|
+    t.text     "title"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "categories", force: :cascade do |t|
     t.text     "title"

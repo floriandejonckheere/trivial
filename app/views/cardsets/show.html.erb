@@ -1,0 +1,21 @@
+<div class="row">
+  <div class="col-lg-8 col-lg-offset-2">
+    <% if @cardset.cards.size != 0 %>
+    <div class="panel panel-padding panel-default">
+      <div class="panel-body">
+        <% @cardset.cards.each do |card| %>
+        <p>
+          <%= card.question %> (<%= card.answer %>)
+        </p>
+        <% end %>
+        <%= link_to t('cards_action_add'), new_cardset_card_path(@cardset), :class => "btn btn-primary" %>
+      </div>
+    </div>
+    <% else %>
+    <div class="alert alert-warning">
+        <h4><%= t('title_nocards') %></h4>
+        <p><%= t('text_nocards') %> <strong><%= link_to t('link_nocards'), new_cardset_card_path(@cardset) %></strong></p>
+    </div>
+    <% end %>
+  </div>
+</div>

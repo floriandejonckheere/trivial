@@ -1,9 +1,34 @@
 <div class="row">
   <div class="col-lg-8 col-lg-offset-2">
+    <% if Category.all.size == 0 %>
+    <div class="alert alert-warning">
+        <h4><%= t('title_nocategories') %></h4>
+        <p><%= t('text_nocategories') %> <strong><%= link_to t('link_nocategories'), new_category_path %></strong></p>
+    </div>
+    <% end %>
     <% if @cardsets.size != 0 %>
-    <div class="panel panel-default">
+    <div class="panel panel-padding panel-default">
       <div class="panel-body">
-        CardSets
+        <table class="table">
+          <thead>
+            <th><%= t('title_title') %></th>
+            <th><%= t('title_actions') %></th>
+          </thead>
+          <tbody>
+          <% @cardsets.each do |cardset| %>
+            <tr>
+              <td class="td-fill"><%= link_to cardset.title, cardset_path(cardset) %></td>
+              <td>
+                <%= link_to t('action_edit'), edit_cardset_path(cardset) %>
+                <%= link_to t('action_delete'), cardset_path(cardset),
+                      method: :delete,
+                      data: { confirm: t('text_confirmdelete') } %>
+              </td>
+            </tr>
+          <% end %>
+          </tbody>
+        </table>
+        <%= link_to t('cardset_action_add'), new_cardset_path, :class => "btn btn-primary" %>
       </div>
     </div>
     <% else %>

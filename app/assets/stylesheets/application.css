@@ -15,8 +15,21 @@
  *= require bootstrap/dist/css/bootstrap.min
  *= require bootstrap-material-design/dist/css/ripples.min
  *= require bootstrap-material-design/dist/css/material-wfont.min
+ *= require dropdown.js/jquery.dropdown
  */
 
 .panel-padding {
   padding:  20px;
+}
+
+td {
+  white-space:  nowrap;
+}
+
+.td-fill {
+  width:  100%;
+}
+
+.margin-top-md {
+  margin-top: 30px;
 }

@@ -1,0 +1,11 @@
+<div class="row">
+  <div class="col-lg-6 col-lg-offset-3">
+    <div class="panel panel-padding panel-default">
+      <div class="panel-body">
+        <%= form_for @cardset, url: cardset_path(@cardset) do |f| %>
+          <%= render 'form', f: f %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
