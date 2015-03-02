@@ -16,6 +16,7 @@
  *= require bootstrap-material-design/dist/css/ripples.min
  *= require bootstrap-material-design/dist/css/material-wfont.min
  *= require dropdown.js/jquery.dropdown
+ *= require animations
  */
 
 .panel-padding {
@@ -44,4 +45,19 @@ td {
   top: 30px !important;
 
   z-index: 1;
+}
+
+.panel-actions {
+  margin-left: -40px;
+  margin-top: -40px;
+  background-color: transparent !important;
+  border: 0 !important;
+}
+
+.panel-actions i {
+  font-size: 18px;
+}
+
+.well-xl {
+  padding:  40px !important;
 }

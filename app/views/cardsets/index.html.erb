@@ -14,18 +14,24 @@
     <div class="row">
       <% Cardset.all.each do |cardset| %>
         <div class="col-lg-6">
-          <div class="well">
-            <div class="panel-body text-center">
-              <div>
-                <h4><%= cardset.title %></h4>
-                <small><em><%= cardset.cards.size %> <%= :cards %></em></small>
-              </div>
-              <%= link_to t('action_show'), cardset_path(cardset), :class => "btn btn-flat btn-xs" %>
-              <%= link_to t('action_edit'), edit_cardset_path(cardset), :class => "btn btn-flat btn-xs" %>
-              <%= link_to t('action_delete'), cardset_path(cardset),
+          <div class="well well-xl">
+            <ul class="nav nav-tabs panel-actions">
+              <li data-toggle="tooltip" data-placement="bottom" title="<%= t('action_edit') %>">
+                <%= link_to edit_cardset_path(cardset) do %>
+                <i class="mdi-content-create text-muted"></i>
+                <% end %>
+              </li>
+              <li data-toggle="tooltip" data-placement="bottom" title="<%= t('action_delete') %>">
+                <%= link_to cardset_path(cardset),
                       method: :delete,
-                      data: { confirm: t('text_confirmdelete') },
-                      :class => "btn btn-flat btn-danger btn-xs" %>
+                      data: { confirm: t('text_confirmdelete') } do %>
+                <i class="mdi-action-delete text-muted"></i>
+                <% end %>
+              </li>
+            </ul>
+            <div class="panel-body text-center">
+              <h4><%= link_to cardset.title, cardset_path(cardset) %></h4>
+              <small><em><%= cardset.cards.size %> <%= :cards %></em></small>
             </div>
           </div>
         </div>

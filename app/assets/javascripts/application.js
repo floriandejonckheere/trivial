@@ -18,8 +18,15 @@
 //= require bootstrap-material-design/dist/js/ripples.min
 //= require bootstrap-material-design/dist/js/material.min
 //= require dropdown.js/jquery.dropdown
+//= require application
 
-$(document).ready(function(){
+var slideDuration = 400;
+
+var ready = function(){
   $.material.init();
   $(".select").dropdown();
-})
+  $('[data-toggle="tooltip"]').tooltip();
+};
+
+$(document).ready(ready);
+$(document).on('page:load', ready);

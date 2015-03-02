@@ -5,4 +5,6 @@ Rails.application.routes.draw do
   end
 
   resources :categories
+
+  root :to => redirect('/cardsets')
 end
