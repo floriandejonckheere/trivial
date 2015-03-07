@@ -20,6 +20,7 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
+  card: "card"
   error: "error"
 
   title_cardsets: "Cardsets"
@@ -48,9 +49,18 @@ en:
 
   text_confirmdelete: "Are you sure you wish to continue? This will irreversibly delete all dependent cards!"
 
+  text_setcontains: "This set contains"
+
   action_add: "Add"
   action_show: "Show"
+  action_presentation: "Presentation"
   action_edit: "Edit"
   action_update: "Update"
+  action_list: "List"
   action_delete: "Delete"
   action_signout: "Sign out"
+  
+  action_answer: "Show answer"
+  action_question: "Show question"
+  action_previous: "Previous"
+  action_next: "Next"

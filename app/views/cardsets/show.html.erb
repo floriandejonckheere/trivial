@@ -2,38 +2,63 @@
   <i class="mdi-content-add text-white"></i>
 <% end %>
 
-<div class="row">
+<div class="row row-animated">
   <div class="col-lg-8 col-lg-offset-2">
+  <h2><%= @cardset.title %> <small><%= pluralize(@cardset.cards.size, t('card')) %></small></h2>
   <% if Category.all.size != 0 %>
     <% if @cardset.cards.size != 0 %>
-    <div class="row">
-      <% Category.all.each do |category| %>
-        <% if @cardset.cards.where(:category_id => category.id).any? %>
-        <div class="col-lg-6">
-          <div class="well well-xl text-white well-material-<%= category.color %>">
-            <ul class="nav nav-tabs panel-actions">
-              <li data-toggle="tooltip" data-placement="bottom" title="<%= t('action_edit') %>">
-                <%= link_to '' do %>
-                <i class="mdi-content-create"></i>
+    <% Category.all.each do |category| %>
+      <% if @cardset.cards.where(:category_id => category.id).any? %>
+      <h5>
+        <span class="pull-right">
+          <%= link_to cardset_category_path(@cardset, category), :class => "link-icon" do %>
+            <i class="mdi-action-view-carousel" data-toggle="tooltip" data-placement="top" title="<%= t('action_presentation') %>"></i>
+          <% end %>
+        </span>
+        <%= category.title %> <small><%= pluralize(@cardset.cards.where(:category_id => category.id).size, t('card')) %></small>
+      </h5>
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="panel">
+            <div class="panel-body panel-list">
+              <% ellipsis = false %>
+              <% @cardset.cards.where(:category_id => category.id).each_with_index do |card, n| %>
+              <% if ((n > 2) && (n != (@cardset.cards.where(:category_id => category.id).size - 1))) %>
+                <% if !ellipsis %>
+                  <% ellipsis = true %>
+                  <div class="row text-center">
+                    <a href="javascript:void(0);" onClick="$(this).parent().slideUp(200, function(){$(this).siblings('.row-collapsed').slideToggle();});" class="link-icon"><i class="mdi-navigation-more-vert"></i></a>
+                  </div>
                 <% end %>
-              </li>
-              <li data-toggle="tooltip" data-placement="bottom" title="<%= t('action_show') %>">
-                <%= link_to '' do %>
-                <i class="mdi-action-view-carousel"></i>
-                <% end %>
-              </li>
-            </ul>
-            <div class="panel-body text-center">
-              <div>
-                <h4><%= category.title %></h4>
-                <small><em><%= @cardset.cards.where(:category_id => category.id).size %> <%= :cards %></em></small>
+              <div class="row row-collapsed">
+              <% else %>
+              <div class="row">
+              <% end %>
+                <div class="col-xs-1">
+                  <img class="img-circle icon-xs" src="http://lorempixel.com/56/56/people/1" alt="icon">
+                </div>
+                <div class="col-xs-9">
+                  <strong><%= link_to truncate(card.question, length: 50), edit_cardset_card_path(:id => card, :cardset_id => @cardset), :class => "link-black" %></strong>
+                </div>
+                <div class="col-xs-2">
+                  <div class="pull-right">
+                    <%= link_to edit_cardset_card_path(:id => card, :cardset_id => @cardset), :class => "link-icon", :data => {:toggle => "tooltip", :placement => "bottom"}, :title => t('action_edit') do %>
+                      <i class="mdi-content-create"></i>
+                    <% end %>
+                    <%= link_to cardset_card_path(:id => card, :cardset_id => @cardset), method: :delete,
+                                data: { confirm: t('text_confirmdelete') }, :class => "link-icon", :data => {:toggle => "tooltip", :placement => "bottom"}, :title => t('action_delete') do %>
+                      <i class="mdi-action-delete"></i>
+                    <% end %>
+                  </div>
+                </div>
               </div>
+              <% end %>
             </div>
           </div>
         </div>
-        <% end %>
+      </div>
       <% end %>
-    </div>
+    <% end %>
     <% else %>
     <div class="alert alert-warning">
       <h4><%= t('title_nocards') %></h4>
@@ -47,21 +72,4 @@
   </div>
   <% end %>
   </div>
-</div>
-<div class="modal">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                <h4 class="modal-title">Modal title</h4>
-            </div>
-            <div class="modal-body">
-                <p>One fine body…</p>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
-            </div>
-        </div>
-    </div>
 </div>

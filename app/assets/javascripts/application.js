@@ -12,21 +12,34 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require turbolinks
 //= require_tree .
+//= require presentation
 //= require bootstrap/dist/js/bootstrap.min
 //= require bootstrap-material-design/dist/js/ripples.min
 //= require bootstrap-material-design/dist/js/material.min
 //= require dropdown.js/jquery.dropdown
 //= require application
-
-var slideDuration = 400;
-
-var ready = function(){
+$(document).ready(function(){
   $.material.init();
   $(".select").dropdown();
   $('[data-toggle="tooltip"]').tooltip();
-};
+  $('.row-collapsed').slideToggle(0);
+});
 
-$(document).ready(ready);
-$(document).on('page:load', ready);
+// http://stackoverflow.com/a/27578736
+var site;
+var site;
+if(!window.Site) {
+  site = window.Site = {};
+  site.controllers = {}
+
+  site.load = function (controller) {
+    if (this.controllers.hasOwnProperty(controller)) {
+      this.controllers[controller].call();
+    }
+  };
+
+  site.add = function (controller, fn) {
+    this.controllers[controller] = fn;
+  }
+}

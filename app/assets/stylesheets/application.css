@@ -39,6 +39,9 @@ td {
   color: white !important;
 }
 
+.link-icon {
+}
+
 .btn-navbar {
   position: absolute !important;
   right: 10%;
@@ -47,17 +50,66 @@ td {
   z-index: 1;
 }
 
-.panel-actions {
-  margin-left: -40px;
-  margin-top: -40px;
-  background-color: transparent !important;
-  border: 0 !important;
+.hidden {
+  display: none;
 }
 
-.panel-actions i {
+.icon-circle {
+  padding: 4px;
+  border-radius: 100%;
+  color: white;
+}
+
+.icon-xs {
+  height: 24px;
+  width:  24px;
+}
+
+.panel-list {
+  padding-top: 15px !important;
+  padding-bottom: 15px !important;
+}
+
+.panel-list > .row > [class*="col-"] {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  display: inline-block;
+}
+
+.panel-list > .row {
+  padding: 15px;
+  border-bottom: 1px solid #E0E0E0;
+}
+
+.panel-list > .row:first-child {
+  padding-top: 0;
+}
+
+.panel-list > .row:last-child {
+  padding-bottom: 0;
+  border-bottom: 0;
+}
+
+.link-black,
+.link-black:link,
+.link-black:hover,
+.link-black:focus,
+.link-black:visited,
+.link-black:active {
+  color: black;
+}
+
+.link-icon {
   font-size: 18px;
+  margin: auto 10px;
 }
 
-.well-xl {
-  padding:  40px !important;
+.link-icon,
+.link-icon:link,
+.link-icon:hover,
+.link-icon:focus,
+.link-icon:visited,
+.link-icon:active {
+  color: #777;
+  text-decoration: none;
 }

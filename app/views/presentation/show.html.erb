@@ -1,0 +1,61 @@
+<% @cardset.cards.where(:category_id => @category.id).shuffle.each_with_index do |card, n| %>
+<div class="row row-animated <%= (n == 0) ? '' : 'hidden' %>" id="card-<%= n %>">
+  <div class="flipper">
+    <div class="col-xs-12 col-lg-8 col-lg-offset-2 question">
+      <div class="well well-xl text-white well-material-<%= @category.color %>">
+        <ul class="nav nav-tabs panel-actions">
+          <li data-toggle="tooltip" data-placement="bottom" class="action-edit" title="<%= t('action_edit') %>">
+            <%= link_to edit_cardset_card_path(@cardset, card) do %>
+            <i class="mdi-content-create"></i>
+            <% end %>
+          </li>
+          <li data-toggle="tooltip" data-placement="bottom" class="action-toggle" title="<%= t('action_answer') %>">
+            <a href="#"><i class="mdi-action-question-answer"></i></a>
+          </li>
+          <% if @cardset.cards.where(:category_id => @category.id).size > 1 %>
+          <li data-toggle="tooltip" data-placement="bottom" class="action-previous" title="<%= t('action_previous') %>">
+            <a href="#"><i class="mdi-navigation-arrow-back"></i></a>
+          </li>
+          <li data-toggle="tooltip" data-placement="bottom" class="action-next" title="<%= t('action_next') %>">
+            <a href="#"><i class="mdi-navigation-arrow-forward"></i></a>
+          </li>
+          <% end %>
+        </ul>
+        <div class="panel-body text-center">
+          <div>
+            <h4><%= card.question %></h4>
+            <small><em>You don't know do you?</em></small>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-xs-12 col-lg-8 col-lg-offset-2 answer">
+      <div class="well well-xl text-white well-material-<%= @category.color %>">
+        <ul class="nav nav-tabs panel-actions">
+          <li data-toggle="tooltip" data-placement="bottom" class="action-edit" title="<%= t('action_edit') %>">
+            <%= link_to edit_cardset_card_path(@cardset, card) do %>
+            <i class="mdi-content-create"></i>
+            <% end %>
+          </li>
+          <li data-toggle="tooltip" data-placement="bottom" class="action-toggle" title="<%= t('action_question') %>">
+            <a href="#"><i class="mdi-action-help"></i></a>
+          </li>
+          <% if @cardset.cards.where(:category_id => @category.id).size > 1 %>
+          <li data-toggle="tooltip" data-placement="bottom" class="action-previous" title="<%= t('action_previous') %>">
+            <a href="#"><i class="mdi-navigation-arrow-back"></i></a>
+          </li>
+          <li data-toggle="tooltip" data-placement="bottom" class="action-next" title="<%= t('action_next') %>">
+            <a href="#"><i class="mdi-navigation-arrow-forward"></i></a>
+          </li>
+          <% end %>
+        </ul>
+        <div class="panel-body text-center">
+          <div>
+            <h4><%= card.answer %></h4>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<% end %>

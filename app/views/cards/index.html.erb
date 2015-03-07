@@ -1,13 +1,13 @@
-<div class="row">
+<div class="row row-animated">
   <div class="col-lg-8 col-lg-offset-2">
     <% if @cardset.cards.size != 0 %>
     <div class="panel panel-padding panel-default">
       <div class="panel-body">
+        <h3><%= @cardset.title %></h3>
         <table class="table">
           <thead>
             <th>Question</th>
             <th>Category</th>
-            <th>Cardset</th>
             <th>Actions</th>
           </thead>
           <tbody>
@@ -15,7 +15,6 @@
             <tr>
               <td class="td-fill"><%= card.question %></td>
               <td class="td-fill"><%= card.category.title %></td>
-              <td class="td-fill"><%= card.cardset.title %></td>
               <td>
                 <%= link_to t('action_edit'), edit_cardset_card_path(:id => card, :cardset_id => @cardset) %>
                 <%= link_to t('action_delete'), cardset_card_path(:id => card, :cardset_id => @cardset),
@@ -26,7 +25,7 @@
           <% end %>
           </tbody>
         </table>
-        <%= link_to t('cardset_action_add'), new_cardset_path, :class => "btn btn-primary" %>
+        <%= link_to t('action_add'), new_cardset_card_path(@cardset), :class => "btn btn-primary" %>
       </div>
     </div>
     <% end %>

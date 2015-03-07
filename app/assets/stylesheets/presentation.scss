@@ -1,0 +1,39 @@
+div[id^="card-"] {
+  perspective: 1000;
+
+  height: 200px;
+}
+
+.flipper {
+  transform-origin: 50% 100px;
+}
+
+.flipped .flipper {
+  transform: rotateX(180deg);
+}
+
+.question,
+.answer {
+  position: absolute !important;
+  left: 0;
+  top: 0;
+  height: 200px;
+
+  backface-visibility: hidden;
+}
+
+.flipper {
+  transition: 0.6s;
+  transform-style: preserve-3d;
+
+  position: relative;
+}
+
+.question {
+  z-index: 2;
+  transform: rotateX(0deg);
+}
+
+.answer {
+  transform: rotateX(180deg);
+}

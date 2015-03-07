@@ -10,18 +10,16 @@
 <% end %>
 
 <div class="form-group">
-  <%= f.text_area :question, :class => "form-control floating-label", :placeholder => :question %>
+  <%= f.text_area :question, :class => "form-control floating-label", :placeholder => :question, :required => "true" %>
 </div>
 
 <div class="form-group">
-  <%= f.text_area :answer, :class => "form-control floating-label", :placeholder => :answer %>
+  <%= f.text_area :answer, :class => "form-control floating-label", :placeholder => :answer, :required => "true" %>
 </div>
 
 <div class="form-group margin-top-md">
   <%= f.select(:category_id, {}, {}, { :class => "select form-control floating-label", :placeholder => :Category }) do %>
-    <% Category.all.each do |category| %>
-      <%= content_tag(:option, category.title, value: category.id) %>
-    <% end %>
+    <%= options_for_select(Category.all.collect {|cat| [ cat.title, cat.id ] }, @card.category_id) %>
   <% end %>
 </div>
 

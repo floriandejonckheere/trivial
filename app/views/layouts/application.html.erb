@@ -8,6 +8,13 @@
 </head>
 <body>
 
+<script>
+$(document).on("ready page:load", function(){
+  console.log('Loading spec js: <%= controller_name %>')
+  Site.load('<%= controller_name %>');
+});
+</script>
+
 <nav class="navbar navbar-warning">
   <div class="navbar-header">
     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-warning-collapse">
@@ -15,7 +22,7 @@
       <span class="icon-bar"></span>
       <span class="icon-bar"></span>
     </button>
-    <a class="navbar-brand" href="/">Trivial</a>
+    <a class="navbar-brand" href="/cardsets">Trivial</a>
   </div>
   <div class="navbar-collapse collapse navbar-warning-collapse">
     <ul class="nav navbar-nav">

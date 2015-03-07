@@ -1,10 +1,5 @@
 class CardsController < ApplicationController
 
-  # DEBUG
-  def index
-    @cardset = Cardset.find(params[:cardset_id])
-  end
-
   def new
     @card = Card.new
     @cardset = Cardset.find(params[:cardset_id])
