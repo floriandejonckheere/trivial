@@ -4,6 +4,8 @@
 
 <div class="row row-animated">
   <div class="col-md-8 col-md-offset-2">
+    <h2 class="list-title"><%= :Cardsets %></h2>
+    <hr>
     <% if Category.all.size == 0 %>
     <div class="alert alert-warning">
         <h4><%= t('title_nocategories') %></h4>
@@ -11,8 +13,6 @@
     </div>
     <% end %>
     <% if Cardset.all.size != 0 %>
-    <h2 class="list-title"><%= :Cardsets %></h2>
-    <hr>
     <div class="panel">
       <div class="panel-body panel-list">
         <% Cardset.all.each do |cardset| %>

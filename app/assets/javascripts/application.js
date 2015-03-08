@@ -14,11 +14,12 @@
 //= require jquery_ujs
 //= require_tree .
 //= require presentation
+//= require application
 //= require bootstrap/dist/js/bootstrap.min
 //= require bootstrap-material-design/dist/js/ripples.min
 //= require bootstrap-material-design/dist/js/material.min
 //= require dropdown.js/jquery.dropdown
-//= require application
+
 $(document).ready(function(){
   $.material.init();
   $(".select").dropdown();

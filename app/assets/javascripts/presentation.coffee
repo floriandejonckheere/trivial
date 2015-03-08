@@ -49,6 +49,5 @@ Site.add 'presentation', ->
     $('[id="card-0"]').removeClass 'hidden'
     updateProgress i
     return
-    
 
   return

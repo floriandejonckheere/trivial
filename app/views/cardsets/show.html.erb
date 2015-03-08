@@ -10,10 +10,10 @@
           <% end %>
           <%= @cardset.title %> <small><%= pluralize(@cardset.cards.size, t('card')) %></small>
         </h2>
+        <hr>
     <% if Category.all.size != 0 %>
       <% if @cardset.cards.size != 0 %>
       <% Category.all.each do |category| %>
-        <hr>
         <% if @cardset.cards.where(:category_id => category.id).any? %>
         <h4 class="list-title">
           <span class="pull-right">
