@@ -1,3 +1,21 @@
+<div class="row">
+  <div class="col-xs-8 col-xs-offset-2">
+    <h2 class="list-title">
+      <%= link_to cardset_path(@cardset), :class => "link-icon icon-xl" do %>
+        <i class="mdi-navigation-arrow-back"></i>
+      <% end %>
+      <%= @cardset.title %>: <%= @category.title %>
+    </h2>
+    <hr>
+    <div class="progress">
+      <div class="progress-bar progress-bar-info" style="width: 0;" id="progress"></div>
+    </div>
+    <div class="text-center">
+      <strong><span id="progress-done">0</span>/<span id="progress-max"></span></strong>
+    </div>
+  </div>
+</div>
+<hr>
 <% @cardset.cards.where(:category_id => @category.id).shuffle.each_with_index do |card, n| %>
 <div class="row row-animated <%= (n == 0) ? '' : 'hidden' %>" id="card-<%= n %>">
   <div class="flipper">
@@ -10,21 +28,21 @@
             <% end %>
           </li>
           <li data-toggle="tooltip" data-placement="bottom" class="action-toggle" title="<%= t('action_answer') %>">
-            <a href="#"><i class="mdi-action-question-answer"></i></a>
+            <a href="javascript:void(0);"><i class="mdi-action-question-answer"></i></a>
           </li>
           <% if @cardset.cards.where(:category_id => @category.id).size > 1 %>
           <li data-toggle="tooltip" data-placement="bottom" class="action-previous" title="<%= t('action_previous') %>">
-            <a href="#"><i class="mdi-navigation-arrow-back"></i></a>
+            <a href="javascript:void(0);"><i class="mdi-navigation-arrow-back"></i></a>
           </li>
           <li data-toggle="tooltip" data-placement="bottom" class="action-next" title="<%= t('action_next') %>">
-            <a href="#"><i class="mdi-navigation-arrow-forward"></i></a>
+            <a href="javascript:void(0);"><i class="mdi-navigation-arrow-forward"></i></a>
           </li>
           <% end %>
         </ul>
         <div class="panel-body text-center">
           <div>
             <h4><%= card.question %></h4>
-            <small><em>You don't know do you?</em></small>
+            <small><em><%= t('text_presentation_subtext') %></em></small>
           </div>
         </div>
       </div>
@@ -38,14 +56,14 @@
             <% end %>
           </li>
           <li data-toggle="tooltip" data-placement="bottom" class="action-toggle" title="<%= t('action_question') %>">
-            <a href="#"><i class="mdi-action-help"></i></a>
+            <a href="javascript:void(0);"><i class="mdi-action-help"></i></a>
           </li>
           <% if @cardset.cards.where(:category_id => @category.id).size > 1 %>
           <li data-toggle="tooltip" data-placement="bottom" class="action-previous" title="<%= t('action_previous') %>">
-            <a href="#"><i class="mdi-navigation-arrow-back"></i></a>
+            <a href="javascript:void(0);"><i class="mdi-navigation-arrow-back"></i></a>
           </li>
           <li data-toggle="tooltip" data-placement="bottom" class="action-next" title="<%= t('action_next') %>">
-            <a href="#"><i class="mdi-navigation-arrow-forward"></i></a>
+            <a href="javascript:void(0);"><i class="mdi-navigation-arrow-forward"></i></a>
           </li>
           <% end %>
         </ul>
@@ -59,3 +77,8 @@
   </div>
 </div>
 <% end %>
+<div class="hidden text-center" id="finished">
+  <h3><%= t('text_presentation_finished') %></h3>
+  <%= link_to t('action_back'), cardset_path(@cardset), :class => "btn" %>
+  <a href="javascript:void(0);" class="btn" id="action-restart"><%= t('action_restart') %></a>
+</div>

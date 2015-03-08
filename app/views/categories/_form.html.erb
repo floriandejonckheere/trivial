@@ -18,18 +18,16 @@
     <small><%= :Color %></small>
     <div>
       <% Category.colors.each do |c| %>
-        <div class="color-box withripple well-material-<%= c %>">
+        <div class="color-box withripple well-material-<%= c %>" data-toggle="tooltip" title="<%= c.capitalize %>">
           <%= f.radio_button :color, c %>
           <div class="radio-label radio-label-inactive mdi-action-done"></div>
         </div>
       <% end %>
     </div>
   </div>
-  <div class="form-group">
-    <% if params[:action] != 'new' %>
-    <%= f.submit t('action_update'), :class => "btn btn-success btn-raised" %>
-    <% else %>
-    <%= f.submit t('action_add'), :class => "btn btn-success btn-raised" %>
-    <% end %>
-  </div>
+  <% if params[:action] != 'new' %>
+  <%= f.submit t('action_update'), :class => "btn" %>
+  <% else %>
+  <%= f.submit t('action_add'), :class => "btn" %>
+  <% end %>
 <% end %>

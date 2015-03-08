@@ -1,9 +1,9 @@
-<%= link_to new_cardset_path, :class => "btn btn-fab btn-raised btn-material-blue btn-navbar" do %>
+<%= link_to new_cardset_path, :class => "btn btn-fab btn-raised btn-material-red btn-navbar" do %>
   <i class="mdi-content-add text-white"></i>
 <% end %>
 
 <div class="row row-animated">
-  <div class="col-lg-8 col-lg-offset-2">
+  <div class="col-md-8 col-md-offset-2">
     <% if Category.all.size == 0 %>
     <div class="alert alert-warning">
         <h4><%= t('title_nocategories') %></h4>
@@ -11,37 +11,36 @@
     </div>
     <% end %>
     <% if Cardset.all.size != 0 %>
-    <h5>Cardsets</h5>
-    <div class="row row-fluid">
-      <div class="col-xs-12">
-        <div class="panel">
-          <div class="panel-body panel-list">
-            <% Cardset.all.each do |cardset| %>
-            <div class="row">
-              <div class="col-xs-1">
-                <img class="img-circle icon-xs" src="http://lorempixel.com/56/56/people/1" alt="icon">
-              </div>
-              <div class="col-xs-7">
-                <strong><%= link_to truncate(cardset.title, length: 50), cardset_path(cardset), :class => "link-black" %></strong>
-              </div>
-              <div class="col-xs-2">
-                <small><%= cardset.cards.size %> <%= :cards %></small>
-              </div>
-              <div class="col-xs-2">
-                <div class="pull-right">
-                  <%= link_to edit_cardset_path(cardset), :class => "link-icon", :data => {:toggle => "tooltip", :placement => "bottom"}, :title => t('action_edit') do %>
-                    <i class="mdi-content-create"></i>
-                  <% end %>
-                  <%= link_to cardset_path(cardset), method: :delete,
-                              data: { confirm: t('text_confirmdelete') }, :class => "link-icon", :data => {:toggle => "tooltip", :placement => "bottom"}, :title => t('action_delete') do %>
-                    <i class="mdi-action-delete"></i>
-                  <% end %>
-                </div>
-              </div>
+    <h2 class="list-title"><%= :Cardsets %></h2>
+    <hr>
+    <div class="panel">
+      <div class="panel-body panel-list">
+        <% Cardset.all.each do |cardset| %>
+        <div class="row">
+          <div class="hidden-xs col-sm-1">
+            <img class="img-circle icon-xs" src="http://lorempixel.com/56/56/people/1" alt="icon">
+          </div>
+          <div class="col-xs-8 col-sm-6">
+            <span>
+              <strong><%= link_to truncate(cardset.title, length: 40), cardset_path(cardset), :class => "link-black" %></strong>
+            </span>
+          </div>
+          <div class="hidden-xs col-sm-2">
+            <small><%= pluralize(cardset.cards.size, t('card')) %></small>
+          </div>
+          <div class="col-xs-4 col-sm-2">
+            <div class="pull-right">
+              <%= link_to edit_cardset_path(cardset), :class => "link-icon", :data => {:toggle => "tooltip", :placement => "bottom"}, :title => t('action_edit') do %>
+                <i class="mdi-content-create"></i>
+              <% end %>
+              <%= link_to cardset_path(cardset), method: :delete,
+                          data: { confirm: t('text_confirmdelete'), :toggle => "tooltip", :placement => "bottom" }, :class => "link-icon", :title => t('action_delete') do %>
+                <i class="mdi-action-delete"></i>
+              <% end %>
             </div>
-            <% end %>
           </div>
         </div>
+        <% end %>
       </div>
     </div>
     <% else %>

@@ -1,5 +1,12 @@
 <div class="row row-animated">
-  <div class="col-lg-6 col-lg-offset-3">
+  <div class="col-md-6 col-md-offset-3">
+    <h2 class="list-title">
+      <%= link_to categories_path, :class => "link-icon icon-xl" do %>
+        <i class="mdi-navigation-arrow-back"></i>
+      <% end %>
+    <%= t('action_edit') %> <%= :cardset %>
+    </h2>
+    <hr>
     <div class="well well-lg">
       <div class="panel-body">
         <%= render 'form' %>

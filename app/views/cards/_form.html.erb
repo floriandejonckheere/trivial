@@ -23,10 +23,8 @@
   <% end %>
 </div>
 
-<div class="form-group">
-  <% if params[:action] != 'new' %>
-  <%= f.submit t('action_update'), :class => "btn btn-success btn-raised" %>
-  <% else %>
-  <%= f.submit t('action_add'), :class => "btn btn-success btn-raised" %>
-  <% end %>
-</div>
+<% if params[:action] != 'new' %>
+<%= f.submit t('action_update'), :class => "btn" %>
+<% else %>
+<%= f.submit t('action_add'), :class => "btn" %>
+<% end %>

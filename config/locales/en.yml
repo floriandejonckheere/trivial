@@ -51,9 +51,15 @@ en:
 
   text_setcontains: "This set contains"
 
+  text_presentation_finished: "You have completed all questions"
+  text_presentation_subtext: "Don't you know?"
+  text_showmorequestions: "Show %{number} more"
+
   action_add: "Add"
   action_show: "Show"
   action_presentation: "Presentation"
+  action_restart: "Restart"
+  action_back: "Back"
   action_edit: "Edit"
   action_update: "Update"
   action_list: "List"

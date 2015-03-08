@@ -1,13 +1,15 @@
-<%= link_to new_category_path, :class => "btn btn-fab btn-raised btn-material-blue btn-navbar" do %>
+<%= link_to new_category_path, :class => "btn btn-fab btn-raised btn-material-red btn-navbar" do %>
   <i class="mdi-content-add text-white"></i>
 <% end %>
 
 <div class="row row-animated">
-  <div class="col-lg-8 col-lg-offset-2">
+  <div class="col-md-8 col-md-offset-2">
   <% if Category.all.size != 0 %>
+  <h2 class="list-title"><%= :Categories %></h2>
+  <hr>
   <div class="row">
     <% Category.all.each do |category| %>
-      <div class="col-lg-6">
+      <div class="col-sm-6">
         <div class="well text-white well-material-<%= category.color %>">
           <div class="panel-body text-center">
             <h4><%= category.title %></h4>

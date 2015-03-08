@@ -1,5 +1,18 @@
 <div class="row row-animated">
   <div class="col-lg-8 col-lg-offset-2">
+    <h2 class="list-title">
+      <%= link_to cardset_path(@cardset), :class => "link-icon icon-xl" do %>
+        <i class="mdi-navigation-arrow-back"></i>
+      <% end %>
+      <%= t('action_add') %> <%= :card %>
+    </h2>
+    <hr>
+    <% if Category.all.size == 0 %>
+    <div class="alert alert-warning">
+        <h4><%= t('title_nocategories') %></h4>
+        <p><%= t('text_nocategories') %> <strong><%= link_to t('link_nocategories'), new_category_path %></strong></p>
+    </div>
+    <% end %>
     <div class="well well-lg">
       <div class="panel-body">
         <%= form_for @card, url: cardset_cards_path do |f| %>

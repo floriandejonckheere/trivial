@@ -1,5 +1,12 @@
 <div class="row row-animated">
   <div class="col-lg-6 col-lg-offset-3">
+    <h2 class="list-title">
+      <%= link_to cardset_path(@cardset), :class => "link-icon icon-xl" do %>
+        <i class="mdi-navigation-arrow-back"></i>
+      <% end %>
+      <%= t('action_edit') %> <%= :card %>
+    </h2>
+    <hr>
     <div class="well well-lg">
       <div class="panel-body">
         <%= form_for @card, url: cardset_card_path(:id => @card, :cardset_id => @cardset) do |f| %>

@@ -33,10 +33,12 @@ class CardsController < ApplicationController
   end
 
   def destroy
-    @card = Card.find(params[:card_id])
+    @card = Card.find(params[:id])
+    @cardset = Cardset.find(params[:cardset_id])
+
     @card.destroy
 
-    redirect_to cards_path
+    redirect_to cardset_path(@cardset)
   end
 
 end

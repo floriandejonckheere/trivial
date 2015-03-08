@@ -23,23 +23,12 @@
   padding:  20px;
 }
 
-td {
-  white-space:  nowrap;
-}
-
-.td-fill {
-  width:  100%;
-}
-
 .margin-top-md {
   margin-top: 30px;
 }
 
 .text-white {
   color: white !important;
-}
-
-.link-icon {
 }
 
 .btn-navbar {
@@ -65,15 +54,14 @@ td {
   width:  24px;
 }
 
+/*
+ * Panel list
+ * 
+ * */
+
 .panel-list {
   padding-top: 15px !important;
   padding-bottom: 15px !important;
-}
-
-.panel-list > .row > [class*="col-"] {
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  display: inline-block;
 }
 
 .panel-list > .row {
@@ -90,18 +78,57 @@ td {
   border-bottom: 0;
 }
 
+.panel-list > .row > [class*="col-"] {
+  height: 24px;
+  display: table;
+}
+
+.panel-list > .row > [class*="col-"] > span {
+  vertical-align: middle;
+  display: table-cell;
+}
+
+.list-title {
+  font-family: "Roboto Light","Helvetica Neue",Helvetica,Arial,sans-serif;
+  margin-top: 0 !important;
+}
+
+/**
+ * Panel actionbar
+ * 
+ * */
+
+.well-xl {
+  padding: 40px !important;
+}
+
+.panel-actions {
+  margin-left: -40px;
+  margin-top: -40px;
+  background-color: transparent !important;
+  border: 0 !important;
+}
+
+.panel-actions i {
+  font-size: 18px;
+}
+
+/**
+ * Links
+ *
+ * */
 .link-black,
 .link-black:link,
 .link-black:hover,
 .link-black:focus,
 .link-black:visited,
 .link-black:active {
-  color: black;
+  color: #505050;
 }
 
 .link-icon {
   font-size: 18px;
-  margin: auto 10px;
+  margin-right: 10px;
 }
 
 .link-icon,
@@ -112,4 +139,12 @@ td {
 .link-icon:active {
   color: #777;
   text-decoration: none;
+}
+
+/**
+ * Icons
+ * 
+ * */
+.icon-xl {
+  font-size: 24px;
 }
