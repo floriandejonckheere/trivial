@@ -15,10 +15,10 @@
 //= require_tree .
 //= require presentation
 //= require application
-//= require bootstrap/dist/js/bootstrap.min
-//= require bootstrap-material-design/dist/js/ripples.min
-//= require bootstrap-material-design/dist/js/material.min
-//= require dropdown.js/jquery.dropdown
+//= require bootstrap/bootstrap
+//= require bootstrap-material-design/ripples
+//= require bootstrap-material-design/material
+//= require jquery.dropdown
 
 $(document).ready(function(){
   $.material.init();

@@ -12,10 +12,10 @@
  *
  *= require_tree .
  *= require_self
- *= require bootstrap/dist/css/bootstrap.min
- *= require bootstrap-material-design/dist/css/ripples.min
- *= require bootstrap-material-design/dist/css/material-wfont.min
- *= require dropdown.js/jquery.dropdown
+ *= require bootstrap/bootstrap
+ *= require bootstrap-material-design/ripples
+ *= require bootstrap-material-design/material-wfont
+ *= require jquery.dropdown
  *= require animations
  */
 
