@@ -6,6 +6,7 @@
       <% end %>
       <%= @cardset.title %>: <%= @category.title %>
     </h2>
+    <% if @cardset.cards.where(:category_id => @category.id).size > 1 %>
     <hr>
     <div class="progress">
       <div class="progress-bar progress-bar-info" style="width: 0;" id="progress"></div>
@@ -13,6 +14,7 @@
     <div class="text-center">
       <strong><span id="progress-done">0</span>/<span id="progress-max"></span></strong>
     </div>
+    <% end %>
   </div>
 </div>
 <hr>

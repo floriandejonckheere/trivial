@@ -42,17 +42,6 @@
   display: none;
 }
 
-.icon-circle {
-  padding: 4px;
-  border-radius: 100%;
-  color: white;
-}
-
-.icon-xs {
-  height: 24px;
-  width:  24px;
-}
-
 /*
  * Panel list
  * 
@@ -146,4 +135,14 @@
  * */
 .icon-xl {
   font-size: 24px;
+}
+
+.icon-md {
+  font-size: 18px;
+}
+
+.icon-circle {
+  padding: 4px;
+  border-radius: 100%;
+  color: white;
 }
