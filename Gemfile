@@ -5,6 +5,8 @@ source "https://rails-assets.org" do
   gem "rails-assets-bootstrap-material-design"
 end
 
+# Postgres
+gem "pg"
 # Bower for Rails
 gem 'bower-rails', '~> 0.9.2'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
