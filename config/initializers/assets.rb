@@ -10,7 +10,6 @@ Rails.application.config.assets.version = '1.0'
 # application.js, application.css, and all non-JS/CSS in app/assets folder are already added.
 # Rails.application.config.assets.precompile += %w( search.js )
 
-Rails.application.config.assets.precompile += %w( bootstrap/dist/fonts/glyphicons-halflings-regular.eot )
-Rails.application.config.assets.precompile += %w( bootstrap/dist/fonts/glyphicons-halflings-regular.woff2 )
-Rails.application.config.assets.precompile += %w( bootstrap/dist/fonts/glyphicons-halflings-regular.woff )
-Rails.application.config.assets.precompile += %w( bootstrap/dist/fonts/glyphicons-halflings-regular.ttf )
+%w( cards cardsets categories presentation ).each do |controller|
+  Rails.application.config.assets.precompile += ["#{controller}.js", "#{controller}.css"]
+end

@@ -12,8 +12,6 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require_tree .
-//= require presentation
 //= require application
 //= require bootstrap/bootstrap
 //= require bootstrap-material-design/ripples
@@ -26,21 +24,3 @@ $(document).ready(function(){
   $('[data-toggle="tooltip"]').tooltip();
   $('.row-collapsed').slideToggle(0);
 });
-
-// http://stackoverflow.com/a/27578736
-var site;
-var site;
-if(!window.Site) {
-  site = window.Site = {};
-  site.controllers = {}
-
-  site.load = function (controller) {
-    if (this.controllers.hasOwnProperty(controller)) {
-      this.controllers[controller].call();
-    }
-  };
-
-  site.add = function (controller, fn) {
-    this.controllers[controller] = fn;
-  }
-}
