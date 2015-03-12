@@ -25,7 +25,7 @@ class CardsController < ApplicationController
     @card = Card.find(params[:id])
     @cardset = Cardset.find(params[:cardset_id])
 
-    if @card.update(params[:card].permit(:question, :answer, :category_id, :cardset_id))
+    if @card.update(params[:card].permit(:question, :answer, :category_id, :cardset_id, :visible))
       redirect_to cardset_path(@cardset)
     else
       render 'edit'
@@ -39,6 +39,13 @@ class CardsController < ApplicationController
     @card.destroy
 
     redirect_to cardset_path(@cardset)
+  end
+  
+  
+  def toggle_visible
+    @card = Card.find(params[:id])
+    @card.toggle!(:visible)
+    render :nothing => true
   end
 
 end

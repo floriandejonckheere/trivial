@@ -37,6 +37,8 @@ en:
   action_edit: "Edit"
   action_update: "Update"
   action_delete: "Delete"
+  action_toggle_visibility: "Toggle visibility"
+  action_visible_all: "Set all cards visible"
   
   action_answer: "Show answer"
   action_question: "Show question"

@@ -37,6 +37,7 @@ nl:
   action_edit: "Bewerken"
   action_update: "Aanpassen"
   action_delete: "Verwijderen"
+  action_toggle_visibility: "Schakel zichtbaarheid"
   
   action_answer: "Antwoord"
   action_question: "Vraag"
