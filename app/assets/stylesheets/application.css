@@ -18,8 +18,20 @@
  *= require animations
  */
 
-.panel-padding {
-  padding:  20px;
+.padding-xs {
+  padding: 5px !important;
+}
+
+.padding-sm {
+  padding: 10px !important;
+}
+
+.padding-md {
+  padding: 20px !important;
+}
+
+.padding-xl {
+  padding: 40px !important;
 }
 
 .margin-top-md {
@@ -48,6 +60,10 @@
   text-overflow: ellipsis;
   display: block;
   width: 400px;
+}
+
+.hr-hidden {
+  opacity: 0;
 }
 
 /*
@@ -93,10 +109,6 @@
  * Panel actionbar
  * 
  * */
-
-.well-xl {
-  padding: 40px !important;
-}
 
 .panel-actions {
   margin-left: -40px;
@@ -146,6 +158,10 @@
  * Icons
  * 
  * */
+.icon-xxl {
+  font-size: 36px;
+}
+
 .icon-xl {
   font-size: 24px;
 }

@@ -1,89 +1,49 @@
 <div class="row">
-  <div class="col-xs-12 col-md-8 col-md-offset-2">
-    <h2 class="list-title">
-      <%= link_to cardset_path(@cardset), :class => "link-icon icon-xl" do %>
-        <i class="mdi-navigation-arrow-back"></i>
-      <% end %>
-      <%= @cardset.title %>: <%= @category.title %>
-    </h2>
-    <% if @cardset.cards.where(:category_id => @category.id).where(:visible => true).size > 1 %>
-    <hr>
-    <div class="progress">
-      <div class="progress-bar progress-bar-info" style="width: 0;" id="progress"></div>
-    </div>
-    <div class="text-center">
-      <strong><span id="progress-done">0</span>/<span id="progress-max"></span></strong>
-    </div>
+  <div class="col-xs-1">
+    <%= link_to cardset_path(@cardset), :class => "link-icon icon-xxl text-white", :data => { :toggle => "tooltip", :placement => "bottom" }, :title => t('action_back') do %>
+      <i class="mdi-navigation-arrow-back"></i>
     <% end %>
   </div>
-</div>
-<hr>
-<% @cardset.cards.where(:category_id => @category.id).where(:visible => true).shuffle.each_with_index do |card, n| %>
-<div class="row row-animated <%= (n == 0) ? '' : 'hidden' %>" id="card-<%= n %>">
-  <div class="flipper">
-    <div class="col-xs-12 col-md-8 col-md-offset-2 question">
-      <div class="well well-xl text-white well-material-<%= @category.color %>">
-        <ul class="nav nav-tabs panel-actions">
-          <li data-toggle="tooltip" data-placement="bottom" class="action-edit" title="<%= t('action_edit') %>">
-            <%= link_to edit_cardset_card_path(@cardset, card) do %>
-            <i class="mdi-content-create"></i>
-            <% end %>
-          </li>
-          <li data-toggle="tooltip" data-placement="bottom" class="action-toggle" title="<%= t('action_answer') %>">
-            <a href="javascript:void(0);"><i class="mdi-action-question-answer"></i></a>
-          </li>
-          <% if @cardset.cards.where(:category_id => @category.id).where(:visible => true).size > 1 %>
-          <li data-toggle="tooltip" data-placement="bottom" class="action-previous" title="<%= t('action_previous') %>">
-            <a href="javascript:void(0);"><i class="mdi-navigation-arrow-back"></i></a>
-          </li>
-          <li data-toggle="tooltip" data-placement="bottom" class="action-next" title="<%= t('action_next') %>">
-            <%= link_to toggle_visible_cardset_card_path(:id => card, :card_id => card, :cardset_id => @cardset), :remote => true do %>
-              <i class="mdi-navigation-arrow-forward"></i>
-            <% end %>
-          </li>
-          <% end %>
-        </ul>
-        <div class="panel-body text-center">
-          <div>
-            <h4><%= nl2br(card.question).html_safe %></h4>
-          </div>
+  <div class="col-xs-11">
+    <span class="pull-right">
+      <div class="panel padding-sm">
+        <div class="panel-body">
+          <!-- TODO: show only categories which contain >= 1 card -->
+          <%= select_tag(:category_id, options_for_select(Category.all.collect {|cat| [ cat.title, cat.id ] }, @category.id), { :class => "select form-control floating-label", :id => "category_select", :placeholder => :Category } ) %>
         </div>
       </div>
-    </div>
-    <div class="col-xs-12 col-lg-8 col-lg-offset-2 answer">
-      <div class="well well-xl text-white well-material-<%= @category.color %>">
-        <ul class="nav nav-tabs panel-actions">
-          <li data-toggle="tooltip" data-placement="bottom" class="action-edit" title="<%= t('action_edit') %>">
-            <%= link_to edit_cardset_card_path(@cardset, card) do %>
-            <i class="mdi-content-create"></i>
-            <% end %>
-          </li>
-          <li data-toggle="tooltip" data-placement="bottom" class="action-toggle" title="<%= t('action_question') %>">
-            <a href="javascript:void(0);"><i class="mdi-action-help"></i></a>
-          </li>
-          <% if @cardset.cards.where(:category_id => @category.id).where(:visible => true).size > 1 %>
-          <li data-toggle="tooltip" data-placement="bottom" class="action-previous" title="<%= t('action_previous') %>">
-            <a href="javascript:void(0);"><i class="mdi-navigation-arrow-back"></i></a>
-          </li>
-          <li data-toggle="tooltip" data-placement="bottom" class="action-next" title="<%= t('action_next') %>">
-            <%= link_to toggle_visible_cardset_card_path(:id => card, :cardset_id => @cardset), :remote => true do %>
-              <i class="mdi-navigation-arrow-forward"></i>
-            <% end %>
-          </li>
-          <% end %>
-        </ul>
-        <div class="panel-body text-center">
-          <div>
-            <h4><%= nl2br(card.answer).html_safe %></h4>
-          </div>
+    </span>
+  </div>
+</div>
+<hr class="hr-hidden">
+<div class="row row-animated">
+  <div class="col-xs-12 col-md-8 col-md-offset-2">
+    <div class="well padding-xl">
+      <div class="panel-body text-center">
+        <div>
+          <h4>
+            <strong>
+              <div id="text-question"></div>
+              <div id="text-completed"><%= t('text_presentation_finished') %></div>
+            </strong>
+          </h4>
+          <hr>
+          <h5>
+            <div id="text-answer"></div>
+          </h5>
         </div>
       </div>
     </div>
   </div>
 </div>
-<% end %>
-<div class="hidden text-center" id="finished">
-  <h3><%= t('text_presentation_finished') %></h3>
-  <%= link_to t('action_back'), cardset_path(@cardset), :class => "btn" %>
-  <a href="javascript:void(0);" class="btn" id="action-restart"><%= t('action_restart') %></a>
+<hr class="hr-hidden">
+<div class="row">
+  <div class="col-xs-12 text-center">
+    <a href="javascript:void(0);" id="btn-previous" class="btn btn-flat text-white"><%= t('action_previous') %></a>
+    <a href="javascript:void(0);" id="btn-answer" class="btn btn-flat text-white"><%= t('action_answer') %></a>
+    <a href="javascript:void(0);" id="btn-next" class="btn btn-flat text-white"><%= t('action_next') %></a>
+  </div>
 </div>
+
+<input type="hidden" id="cardset_id" value="<%= @cardset.id %>">
+<input type="hidden" id="category_id" value="<%= @category.id %>">

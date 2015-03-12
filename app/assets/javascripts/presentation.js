@@ -1,58 +1,106 @@
 $(document).ready(function(){
-  var i, max, updateProgress;
+  var cardset = $('#cardset_id').val();
+  var category = $('#category_id').val();
 
-  updateProgress = function(id) {
-    $('#progress').css('width', (i / max) * 100 + '%');
-    $('#progress-done').html(i);
-  };
+  window.categories = {};
+  window.cards = {};
 
-  i = 0;
+  window.currentSet = [];
+  window.currentIdx = 0;
 
-  max = Number.MIN_VALUE;
+  var updateView = function(){
+    //~ $.ajax({
+      //~ type: 'GET',
+      //~ url: '/cardsets/' + cardset + '/cards/' + window.currentSet[window.currentIdx].id + '/toggle_visible',
+      //~ success: function(){
+        //~ console.log('Set visible: ' + window.currentSet[window.currentIdx].question);
+      //~ }
+    //~ });
+    $('#text-question').html(window.currentSet[window.currentIdx].question);
+    $('#text-answer').fadeOut(400, function(){ $(this).html(window.currentSet[window.currentIdx].answer); });
+  }
 
-  $('[id^="card-"]').each(function() {
-    var num;
-    num = parseInt(this.id.split('-')[1], 10) || 0;
-    max = Math.max(num, max);
-  });
+  $.ajax({
+    type: 'GET',
+    url: '/cardsets/' + cardset + '.json',
+    success: function(data){
+      $.each(data.cards, function(idx, val){
+        if(!window.cards[val.category]) window.cards[val.category] = [];
+        window.cards[val.category].push({
+          id: val.id,
+          question: val.question,
+          answer: val.answer,
+          category: val.category,
+          visible: val.visible
+        });
+      });
+      
+      $.ajax({
+        type: 'GET',
+        url: '/categories.json',
+        success: function(data){
+          $.each(data.categories, function(idx, val){
+            window.categories[val.id] = {
+              title: val.title,
+              color: val.color
+            };
+          });
 
-  max++;
-
-  $('#progress-max').html(max);
-
-  $('.action-toggle').click(function() {
-    $(this).parents('[id^="card-"]').toggleClass('flipped');
-  });
-
-  $('.action-previous').click(function() {
-    if ($(this).parents('[id^="card-"]').attr('id') === "card-0") {
-      $(this).addClass('text-muted');
-    } else {
-      $(this).parents('[id^="card-"]').removeClass('flipped');
-      $('[id="card-' + i + '"]').addClass('hidden');
-      i = (((i - 1) % max) + max) % max;
-      $('[id="card-' + i + '"]').removeClass('hidden');
-      updateProgress(i);
+          $('#category_select').change(function(){
+            $('main').removeClass().addClass('well-material-' + window.categories[$(this).val()].color);
+            
+            window.currentSet = [];
+            window.currentIdx = 0;
+            $.each(window.cards[$(this).val()], function(idx, val){
+              if(val.visible){
+                window.currentSet.push({
+                  question: val.question,
+                  answer: val.answer,
+                  id: val.id
+                });
+              }
+            });
+            $('#btn-previous').attr('disabled', true);
+            if(window.currentSet.length > 0){
+              $('#text-question').show();
+              $('#text-completed').hide();
+              if(window.currentSet.length == 1) $('#btn-next').attr('disabled', true);
+              // TODO: shuffle
+              updateView();
+            } else {
+              $('#text-question').hide();
+              $('#text-answer').fadeOut();
+              $('#text-completed').show();
+            }
+          });
+          $('#category_select').change();
+          
+          $('#btn-previous').click(function(){
+            if(window.currentIdx != 0){
+              window.currentIdx--;
+              updateView();
+              $('#btn-next').attr('disabled', false);
+              if(window.currentIdx == 0)
+                $('#btn-previous').attr('disabled', true);
+            }
+          });
+          
+          $('#btn-next').click(function(){
+            if(window.currentIdx < (window.currentSet.length - 1)){
+              window.currentIdx++;
+              updateView();
+              $('#btn-previous').attr('disabled', false);
+              if(window.currentIdx == (window.currentSet.length - 1))
+                $('#btn-next').attr('disabled', true);
+            }
+          });
+          
+          $('#btn-answer').click(function(){
+            $('#text-answer').fadeToggle();
+          });
+        }
+      });
     }
   });
 
-  $('.action-next').click(function() {
-    $(this).parents('[id^="card-"]').removeClass('flipped');
-    $('[id="card-' + i + '"]').addClass('hidden');
-    i++;
-    if (i >= max) {
-      $('#finished').removeClass('hidden');
-    } else {
-      $('[id="card-' + i + '"]').removeClass('hidden');
-    }
-    updateProgress(i);
-  });
-
-  $('#action-restart').click(function() {
-    $('#finished').addClass('hidden');
-    $('[id="card-' + i + '"]').addClass('hidden');
-    i = 0;
-    $('[id="card-0"]').removeClass('hidden');
-    updateProgress(i);
-  });
 });

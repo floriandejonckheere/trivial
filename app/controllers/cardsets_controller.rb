@@ -43,7 +43,7 @@ class CardsetsController < ApplicationController
 
   
   def toggle_visible
-    @cards = Cardset.find(params[:cardset_id]).cards.where(:category => params[:category_id])
+    @cards = Cardset.find(params[:cardset_id]).cards.where(:category => params[:id])
     @cards.each do |card|
       card.update_attribute(:visible, true)
     end

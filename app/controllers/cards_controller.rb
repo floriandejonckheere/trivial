@@ -42,7 +42,7 @@ class CardsController < ApplicationController
   end
 
   def toggle_visible
-    @card = Card.find(params[:card_id])
+    @card = Card.find(params[:id])
     @card.toggle!(:visible)
     render :nothing => true
   end
