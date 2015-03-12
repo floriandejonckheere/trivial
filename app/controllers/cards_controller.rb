@@ -40,10 +40,9 @@ class CardsController < ApplicationController
 
     redirect_to cardset_path(@cardset)
   end
-  
-  
+
   def toggle_visible
-    @card = Card.find(params[:id])
+    @card = Card.find(params[:card_id])
     @card.toggle!(:visible)
     render :nothing => true
   end

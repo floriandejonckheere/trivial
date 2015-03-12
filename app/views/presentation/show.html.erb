@@ -37,7 +37,7 @@
             <a href="javascript:void(0);"><i class="mdi-navigation-arrow-back"></i></a>
           </li>
           <li data-toggle="tooltip" data-placement="bottom" class="action-next" title="<%= t('action_next') %>">
-            <%= link_to toggle_visible_cardset_card_path(:id => card, :cardset_id => @cardset), :remote => true do %>
+            <%= link_to toggle_visible_cardset_card_path(:id => card, :card_id => card, :cardset_id => @cardset), :remote => true do %>
               <i class="mdi-navigation-arrow-forward"></i>
             <% end %>
           </li>

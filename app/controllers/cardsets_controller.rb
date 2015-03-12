@@ -41,4 +41,13 @@ class CardsetsController < ApplicationController
     @cardset = Cardset.find(params[:id])
   end
 
+  
+  def toggle_visible
+    @cards = Cardset.find(params[:cardset_id]).cards.where(:category => params[:category_id])
+    @cards.each do |card|
+      card.update_attribute(:visible, true)
+    end
+    render :nothing => true
+  end
+
 end

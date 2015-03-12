@@ -20,6 +20,9 @@
             <%= link_to cardset_category_path(@cardset, category), :class => "link-icon" do %>
               <i class="mdi-action-view-carousel" data-toggle="tooltip" data-placement="top" title="<%= t('action_presentation') %>"></i>
             <% end %>
+            <%= link_to toggle_visible_cardset_category_path(:category_id => category, :cardset_id => @cardset), :remote => true, :class => "link-icon", :data => {:toggle => "visibility", :category_id => category.id} do %>
+              <i class="mdi-action-visibility" data-toggle="tooltip" data-placement="bottom" title="<%= t('action_visible_all') %>"></i>
+            <% end %>
           </span>
           <%= category.title %> <small><%= pluralize(@cardset.cards.where(:category_id => category.id).size, t('card')) %></small>
         </h4>
@@ -52,10 +55,10 @@
                     <i class="mdi-content-create"></i>
                   <% end %>
                   <%= link_to cardset_card_path(:id => card, :cardset_id => @cardset), method: :delete,
-                              data: { confirm: t('text_confirmdelete'), :toggle => "tooltip", :placement => "bottom" }, :class => "link-icon", :title => t('action_delete') do %>
+                              data: { confirm: t('text_confirmdelete_single'), :toggle => "tooltip", :placement => "bottom" }, :class => "link-icon", :title => t('action_delete') do %>
                     <i class="mdi-action-delete"></i>
                   <% end %>
-                  <%= link_to toggle_visible_cardset_card_path(:id => card, :cardset_id => @cardset), :remote => true, :class => "link-icon", :data => {:toggle => "visibility", :card_id => card.id} do %>
+                  <%= link_to toggle_visible_cardset_card_path(:card_id => card, :cardset_id => @cardset), :remote => true, :class => "link-icon", :data => {:toggle => "visibility", :card_id => card.id} do %>
                     <i class="<%= card.visible ? 'mdi-action-visibility' : 'mdi-action-visibility-off' %>" data-toggle="tooltip" data-placement="bottom" title="<%= t('action_toggle_visibility') %>"></i>
                   <% end %>
                 </div>

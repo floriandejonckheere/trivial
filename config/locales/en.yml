@@ -25,6 +25,7 @@ en:
   card_errortext: "prohibited this card from being saved"
 
   text_confirmdelete: "Are you sure you wish to continue? This will irreversibly delete all dependent cards!"
+  text_confirmdelete_single: "Are you sure you wish to continue?"
 
   text_presentation_finished: "You have completed all questions"
   text_showmorequestions: "Show %{number} more"

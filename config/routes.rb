@@ -4,7 +4,10 @@ Rails.application.routes.draw do
     resources :cards do
       get 'toggle_visible', :on => :member
     end
-    resources :categories, only: [:show], :controller => "presentation", :action => "show"
+    resources :categories do
+      get '/', :controller => "presentation", :action => "show"
+      get 'toggle_visible', :on => :member, :controller => "cardsets"
+    end
   end
 
   resources :categories

@@ -25,6 +25,7 @@ nl:
   card_errortext: "verhinderde het opslaan van de kaart"
 
   text_confirmdelete: "Bent u zeker dat u wil doorgaan? Dit zal alle afhankelijke kaarten onomkeerbaard verwijderen!"
+  text_confirmdelete_single: "Bent u zeker dat u wilt doorgaan?"
 
   text_presentation_finished: "Alle vragen zijn beantwoord"
   text_showmorequestions: "Toon %{number} meer"
