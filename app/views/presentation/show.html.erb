@@ -8,8 +8,7 @@
     <span class="pull-right">
       <div class="panel padding-sm">
         <div class="panel-body">
-          <!-- TODO: show only categories which contain >= 1 card -->
-          <%= select_tag(:category_id, options_for_select(Category.all.collect {|cat| [ cat.title, cat.id ] }, @category.id), { :class => "select form-control floating-label", :id => "category_select", :placeholder => :Category } ) %>
+          <%= select_tag(:category_id, options_for_select(@categories.collect {|cat| [ cat.title, cat.id ] }, @category.id), { :class => "select form-control floating-label", :id => "category_select", :placeholder => :Category } ) %>
         </div>
       </div>
     </span>
