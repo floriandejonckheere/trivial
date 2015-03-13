@@ -45,8 +45,8 @@
                 <i class="mdi-communication-messenger icon-md"></i>
               </div>
               <div class="col-xs-9 col-sm-9">
-                <div class="ellipsis">
-                  <strong><%= link_to card.question, edit_cardset_card_path(:id => card, :cardset_id => @cardset), :class => "link-black" %></strong>
+                <div class="ellipsis width-md">
+                  <strong><%= link_to strip_tags(card.question), edit_cardset_card_path(:id => card, :cardset_id => @cardset), :class => "link-black" %></strong>
                 </div>
               </div>
               <div class="col-xs-2 actions">

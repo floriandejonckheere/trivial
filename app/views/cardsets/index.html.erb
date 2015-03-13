@@ -21,9 +21,9 @@
             <i class="mdi-action-question-answer icon-md"></i>
           </div>
           <div class="col-xs-8 col-sm-6">
-            <span>
-              <strong><%= link_to truncate(cardset.title, length: 40), cardset_path(cardset), :class => "link-black" %></strong>
-            </span>
+            <div class="ellipsis width-sm">
+              <strong><%= link_to strip_tags(cardset.title), cardset_path(cardset), :class => "link-black" %></strong>
+            </div>
           </div>
           <div class="hidden-xs col-sm-2">
             <small><%= pluralize(cardset.cards.size, t('card')) %></small>

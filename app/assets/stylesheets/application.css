@@ -59,6 +59,14 @@
   overflow: hidden;
   text-overflow: ellipsis;
   display: block;
+}
+
+/* This isn't exactly responsive anymore */
+.width-sm {
+  width: 300px;
+}
+
+.width-md {
   width: 400px;
 }
 
@@ -174,4 +182,13 @@
   padding: 4px;
   border-radius: 100%;
   color: white;
+}
+
+/**
+ * Markdown edito
+ * 
+ * */
+.nav-btn-bar {
+  border: 0 !important;
+  margin-bottom: 25px !important;
 }
