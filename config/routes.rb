@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   resources :cardsets do
     resources :cards, :except => [:index, :show] do
       get 'toggle_visible', :on => :member
+      get 'set_visible', :on => :member
     end
 
     get '/presentation', :controller => "presentation", :action => "show"

@@ -47,4 +47,11 @@ class CardsController < ApplicationController
     render :nothing => true
   end
 
+  def set_visible
+    @card = Card.find(params[:id])
+
+    @card.update(params[:card].permit(:visible))
+    render :nothing => true
+  end
+
 end

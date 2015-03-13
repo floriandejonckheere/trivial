@@ -8,14 +8,34 @@ $(document).ready(function(){
   window.currentSet = [];
   window.currentIdx = 0;
 
+  var shuffle = function(array){
+    var m = array.length, t, i;
+
+    // While there remain elements to shuffle…
+    while(m){
+
+      // Pick a remaining element
+      i = Math.floor(Math.random() * m--);
+
+      // And swap it with the current element.
+      t = array[m];
+      array[m] = array[i];
+      array[i] = t;
+    }
+
+    return array;
+  };
+
   var updateView = function(){
-    //~ $.ajax({
-      //~ type: 'GET',
-      //~ url: '/cardsets/' + cardset + '/cards/' + window.currentSet[window.currentIdx].id + '/toggle_visible',
-      //~ success: function(){
-        //~ console.log('Set visible: ' + window.currentSet[window.currentIdx].question);
-      //~ }
-    //~ });
+    $.ajax({
+      type: 'GET',
+      url: '/cardsets/' + cardset + '/cards/' + window.currentSet[window.currentIdx].id + '/toggle_visible',
+      data: {
+        card: {
+          visible: false
+        }
+      }
+    });
     $('#text-question').html(window.currentSet[window.currentIdx].question);
     $('#text-answer').fadeOut(400, function(){ $(this).html(window.currentSet[window.currentIdx].answer); });
   }
@@ -65,7 +85,7 @@ $(document).ready(function(){
               $('#text-question').show();
               $('#text-completed').hide();
               if(window.currentSet.length == 1) $('#btn-next').attr('disabled', true);
-              // TODO: shuffle
+              shuffle(window.currentSet);
               updateView();
             } else {
               $('#text-question').hide();
