@@ -20,4 +20,4 @@ RUN bundle exec rake assets:precompile
 
 EXPOSE 3000
 
-CMD ["rails", "server", "-b", "0.0.0.0", "-e", "production"]
+CMD ["./start.sh"]
