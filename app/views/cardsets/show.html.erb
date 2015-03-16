@@ -13,7 +13,7 @@
         <hr>
     <% if Category.all.size != 0 %>
       <% if @cardset.cards.size != 0 %>
-      <% Category.all.each do |category| %>
+      <% Category.all.order("id asc").each do |category| %>
         <% if @cardset.cards.where(:category_id => category.id).any? %>
         <h4 class="list-title">
           <span class="pull-right">
@@ -29,7 +29,7 @@
         <div class="panel">
           <div class="panel-body panel-list">
             <% ellipsis = false %>
-            <% @cardset.cards.where(:category_id => category.id).each_with_index do |card, n| %>
+            <% @cardset.cards.where(:category_id => category.id).order("id asc").each_with_index do |card, n| %>
             <% if ((n > 2) && (n != (@cardset.cards.where(:category_id => category.id).size - 1))) %>
               <% if !ellipsis %>
                 <% ellipsis = true %>
