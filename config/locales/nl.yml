@@ -30,6 +30,8 @@ nl:
   text_presentation_finished: "Alle vragen zijn beantwoord"
   text_showmorequestions: "Toon %{number} meer"
 
+  text_loading_cards: "Kaarten laden"
+
   action_add: "Toevoegen"
   action_show: "Tonen"
   action_presentation: "Presentatie"
@@ -39,6 +41,7 @@ nl:
   action_update: "Aanpassen"
   action_delete: "Verwijderen"
   action_toggle_visibility: "Schakel zichtbaarheid"
+  action_reset: "Shuffle"
   
   action_answer: "Antwoord"
   action_question: "Vraag"

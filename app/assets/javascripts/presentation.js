@@ -1,126 +1,107 @@
-$(document).ready(function(){
-  var cardset = $('#cardset_id').val();
-  var category = $('#category_id').val();
+var shuffle = function(array){
+  var m = array.length, t, i;
 
-  window.categories = {};
-  window.cards = {};
+  // While there remain elements to shuffle
+  while(m){
 
-  window.currentSet = [];
-  window.currentIdx = 0;
+    // Pick a remaining element
+    i = Math.floor(Math.random() * m--);
 
-  var shuffle = function(array){
-    var m = array.length, t, i;
-
-    // While there remain elements to shuffle…
-    while(m){
-
-      // Pick a remaining element
-      i = Math.floor(Math.random() * m--);
-
-      // And swap it with the current element.
-      t = array[m];
-      array[m] = array[i];
-      array[i] = t;
-    }
-
-    return array;
-  };
-
-  var updateView = function(){
-    $.ajax({
-      type: 'GET',
-      url: '/cardsets/' + cardset + '/cards/' + window.currentSet[window.currentIdx].id + '/toggle_visible',
-      data: {
-        card: {
-          visible: false
-        }
-      }
-    });
-    $('#text-question').html(window.currentSet[window.currentIdx].question);
-    $('#text-answer').fadeOut(400, function(){ $(this).html(window.currentSet[window.currentIdx].answer); });
+    // And swap it with the current element.
+    t = array[m];
+    array[m] = array[i];
+    array[i] = t;
   }
 
-  $.ajax({
-    type: 'GET',
-    url: '/cardsets/' + cardset + '.json',
-    success: function(data){
-      $.each(data.cards, function(idx, val){
-        if(!window.cards[val.category]) window.cards[val.category] = [];
-        window.cards[val.category].push({
-          id: val.id,
-          question: val.question,
-          answer: val.answer,
-          category: val.category,
-          visible: val.visible
-        });
-      });
-      
-      $.ajax({
-        type: 'GET',
-        url: '/categories.json',
-        success: function(data){
-          $.each(data.categories, function(idx, val){
-            window.categories[val.id] = {
-              title: val.title,
-              color: val.color
-            };
-          });
+  return array;
+};
 
-          $('#category_select').change(function(){
-            $('main').removeClass().addClass('well-material-' + window.categories[$(this).val()].color);
-            
-            window.currentSet = [];
-            window.currentIdx = 0;
-            $.each(window.cards[$(this).val()], function(idx, val){
-              if(val.visible){
-                window.currentSet.push({
-                  question: val.question,
-                  answer: val.answer,
-                  id: val.id
-                });
-              }
-            });
-            $('#btn-previous').attr('disabled', true);
-            if(window.currentSet.length > 0){
-              $('#text-question').show();
-              $('#text-completed').hide();
-              if(window.currentSet.length == 1) $('#btn-next').attr('disabled', true);
-              shuffle(window.currentSet);
-              updateView();
-            } else {
-              $('#text-question').hide();
-              $('#text-answer').fadeOut();
-              $('#text-completed').show();
-            }
-          });
-          $('#category_select').change();
-          
-          $('#btn-previous').click(function(){
-            if(window.currentIdx != 0){
-              window.currentIdx--;
-              updateView();
-              $('#btn-next').attr('disabled', false);
-              if(window.currentIdx == 0)
-                $('#btn-previous').attr('disabled', true);
-            }
-          });
-          
-          $('#btn-next').click(function(){
-            if(window.currentIdx < (window.currentSet.length - 1)){
-              window.currentIdx++;
-              updateView();
-              $('#btn-previous').attr('disabled', false);
-              if(window.currentIdx == (window.currentSet.length - 1))
-                $('#btn-next').attr('disabled', true);
-            }
-          });
-          
-          $('#btn-answer').click(function(){
-            $('#text-answer').fadeToggle();
-          });
+$(function(){
+
+  /**
+   * Pico MVC framework
+   * 
+   * */
+  // Model
+  var Model = function(props){
+    var self = this;
+
+    self.fields = {};
+    self.controller = props.controller || null;
+
+    Object.keys(props).forEach(function(key){
+      self.fields[key] = props[key];
+    });
+  };
+
+  // View
+  var View = function(props){
+    var self = this;
+
+    self.template = props.template || "";
+    self.delimiter = props.delimiter || ", ";
+
+    self.render = function(model){
+      self.rendered = self.template;
+      Object.keys(model.fields).forEach(function(key){
+        if(model.fields[key] instanceof Array){
+          self.rendered = self.rendered
+                    .replace('{{' + key + '}}', model.fields[key].join(self.delimiter))
+                    .replace('{{' + key + '.length}}', model.fields[key].length);
+        } else {
+          self.rendered = self.rendered
+                    .replace('{{' + key + '}}', model.fields[key].toString());
         }
       });
-    }
-  });
+      return self.rendered;
+    };
+  };
 
+  var Controller = function(props){
+    
+  };
+
+  /**
+   * Application logic
+   * 
+   * */
+
+  var CategoryView = new View({ template: $('[data-template="category"]').html() });
+
+  var width = 0;
+  var progress = function(amount){
+    width = Math.min(width + amount, 100);
+    $('#progress-loading').css('width', width + '%');
+  };
+
+  var categories = {};
+
+  $.when(
+    $.getJSON('/categories', function(data){
+      $.each(data.categories, function(idx, val){
+        var model = new Model({
+          title: val.title,
+          color: val.color,
+          cards: []
+        });
+        categories[val.id] = model;
+        $('[data-bind="categories"]').append(CategoryView.render(model));
+
+        // All categories amount to 20%
+        progress((1 / data.categories.length) * 20);
+      });
+    }),
+
+    // Fetch cards
+    $.getJSON('/cardsets/' + $('#cardset_id').val(), function(data){
+      $.each(data.cards, function(idx, val){
+        categories[val.category].fields.cards.push(new Model(val));
+
+        // All cards amount to 80%
+        progress((1 / data.cards.length) * 80);
+      });
+    });
+  ).done(function(){
+    $('.overlay').fadeOut();
+  });
 });

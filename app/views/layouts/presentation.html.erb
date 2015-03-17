@@ -8,8 +8,23 @@
 </head>
 <body>
 
+  <div class="overlay well-material-blue">
+    <div class="row vertical-align">
+      <div class="col-xs-4 col-xs-offset-4">
+        <div class="well">
+          <div class="panel-body text-center">
+            <h4><%= t('text_loading_cards') %></h4>
+            <hr class="hr-hidden">
+            <div class="progress progress-striped active">
+              <div class="progress-bar progress-bar-info" id="progress-loading" style="width: 1%;"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
   <main class="transition">
-    <div class="padding-md">
+    <div class="padding-lg">
       <%= yield %>
     </div>
   </main>

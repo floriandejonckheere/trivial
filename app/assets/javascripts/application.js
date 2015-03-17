@@ -17,6 +17,7 @@
 //= require bootstrap-material-design/ripples
 //= require bootstrap-material-design/material
 //= require jquery.dropdown
+//= require canjs/can.jquery
 
 $(document).ready(function(){
   $.material.init();

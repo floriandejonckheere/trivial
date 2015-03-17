@@ -13,3 +13,5 @@ Rails.application.config.assets.version = '1.0'
 %w( cards cardsets categories presentation ).each do |controller|
   Rails.application.config.assets.precompile += ["#{controller}.js", "#{controller}.css"]
 end
+
+Rails.application.config.assets.paths << "#{Rails.root}/vendor/assets/fonts"

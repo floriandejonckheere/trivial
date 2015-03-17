@@ -30,6 +30,8 @@ en:
   text_presentation_finished: "You have completed all questions"
   text_showmorequestions: "Show %{number} more"
 
+  text_loading_cards: "Loading cards"
+
   action_add: "Add"
   action_show: "Show"
   action_presentation: "Presentation"
@@ -40,6 +42,7 @@ en:
   action_delete: "Delete"
   action_toggle_visibility: "Toggle visibility"
   action_visible_all: "Set all cards visible"
+  action_shuffle: "Shuffle"
   
   action_answer: "Show answer"
   action_question: "Show question"

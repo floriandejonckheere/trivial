@@ -18,6 +18,11 @@
  *= require animations
  */
 
+html,
+body {
+  font-family: "Roboto-Thin","Helvetica Neue",Helvetica,Arial,sans-serif !important;
+}
+
 .padding-xs {
   padding: 5px !important;
 }
@@ -28,6 +33,10 @@
 
 .padding-md {
   padding: 20px !important;
+}
+
+.padding-lg {
+  padding: 30px !important;
 }
 
 .padding-xl {
@@ -72,6 +81,11 @@
 
 .hr-hidden {
   opacity: 0;
+}
+
+.vertical-align {
+  display: flex;
+  align-items: center;
 }
 
 /*

@@ -3,12 +3,11 @@ source 'https://rubygems.org'
 source "https://rails-assets.org" do
   gem "rails-assets-bootstrap"
   gem "rails-assets-bootstrap-material-design"
+  gem "rails-assets-canjs"
 end
 
 # Postgres
 gem "pg"
-# Bower for Rails
-gem 'bower-rails', '~> 0.9.2'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.0'
 # Use sqlite3 as the database for Active Record
