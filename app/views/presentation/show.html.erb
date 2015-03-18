@@ -19,9 +19,9 @@
     <div class="col-xs-6 col-xs-offset-3">
       <div class="well">
         <div class="panel-body text-center">
-          <h4 data-bind="html: card().question" id="text-question"></h4>
+          <h5 data-bind="html: card().question" id="text-question"></h5>
           <hr>
-          <h5 data-bind="html: card().answer" id="text-answer"></h5>
+          <h6 data-bind="html: card().answer" id="text-answer"></h6>
         </div>
       </div>
       <div class="text-center">
@@ -35,9 +35,9 @@
 <main class="transition">
   <div class="padding-lg">
     <div class="row">
-      <div class="col-xs-8 col-xs-offset-2">
+      <div class="col-xs-10 col-xs-offset-1">
         <div class="row" data-bind="foreach: categories">
-          <div class="col-xs-6">
+          <div class="col-xs-4">
             <div class="well text-white cursor-pointer withripple" data-bind="css: color, click: $parent.showCard">
               <div class="panel-body text-center">
                 <h4 data-bind="text: title"></h4>

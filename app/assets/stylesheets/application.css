@@ -84,8 +84,7 @@ body {
 }
 
 .vertical-align {
-  display: flex;
-  align-items: center;
+  margin-top: 150px;
 }
 
 /*

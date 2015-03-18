@@ -30,11 +30,11 @@
           </div>
           <div class="col-xs-4 col-sm-2">
             <div class="pull-right">
-              <%= link_to edit_cardset_path(cardset), :class => "link-icon", :data => {:toggle => "tooltip", :placement => "bottom"}, :title => t('action_edit') do %>
+              <%= link_to edit_cardset_path(cardset), :class => "link-icon" do %>
                 <i class="mdi-content-create"></i>
               <% end %>
               <%= link_to cardset_path(cardset), method: :delete,
-                          data: { confirm: t('text_confirmdelete'), :toggle => "tooltip", :placement => "bottom" }, :class => "link-icon", :title => t('action_delete') do %>
+                          data: { confirm: t('text_confirmdelete') }, :class => "link-icon" do %>
                 <i class="mdi-action-delete"></i>
               <% end %>
             </div>

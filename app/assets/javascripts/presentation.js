@@ -124,8 +124,8 @@ $(function(){
           if(el.id == val.category){
             el.cards.push(ko.observable(new Card({
               id: val.id,
-              question: val.question,
-              answer: val.answer,
+              question: val.question.replace(/\n/g, '<br>'),
+              answer: val.answer.replace(/\n/g, '<br>'),
               category: val.category
             })));
           }
