@@ -4,46 +4,33 @@ nl:
 
   title_cardsets: "Reeksen"
   title_categories: "Categorieën"
-  title_title: "Titel"
-  title_color: "Kleur"
-  title_actions: "Acties"
-  
+
   title_nocategories: "Geen categorieën gedefinieerd"
   text_nocategories: "Er zijn nog geen categorieën beschikbaar."
   link_nocategories: "Klik hier om een nieuwe category te definiëren"
-  
+
   title_nocardsets: "Geen reeksen gedefinieerd"
   text_nocardsets: "Er zijn nog geen reeksen beschikbaar."
   link_nocardsets: "Klik hier om een nieuwe reeks te definiëren."
-  
+
   title_nocards: "Geen kaarten gedefinieerd"
   text_nocards: "Er zijn nog geen kaarten beschikbaar."
   link_nocards: "Klik hier om een nieuwe kaart te definiëren."
-  
+
   category_errortext: "verhinderde het opslaan van de categorie"
   cardset_errortext: "verhinderde het opslaan van de reeks"
   card_errortext: "verhinderde het opslaan van de kaart"
 
   text_confirmdelete: "Bent u zeker dat u wil doorgaan? Dit zal alle afhankelijke kaarten onomkeerbaar verwijderen!"
-  text_confirmdelete_single: "Bent u zeker dat u wilt doorgaan?"
 
-  text_presentation_finished: "Alle vragen zijn beantwoord"
   text_showmorequestions: "Toon %{number} meer"
 
   text_loading_cards: "Kaarten laden"
 
   action_add: "Toevoegen"
-  action_show: "Tonen"
   action_presentation: "Presentatie"
-  action_restart: "Herstarten"
   action_back: "Terug"
   action_edit: "Bewerken"
   action_update: "Aanpassen"
   action_delete: "Verwijderen"
-  action_toggle_visibility: "Schakel zichtbaarheid"
-  action_reset: "Shuffle"
-  
   action_answer: "Antwoord"
-  action_question: "Vraag"
-  action_previous: "Vorige"
-  action_next: "Volgende"
