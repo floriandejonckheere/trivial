@@ -4,6 +4,11 @@
 
 <div class="row row-animated">
   <div class="col-md-8 col-md-offset-2">
+        <span class="pull-right">
+          <%= link_to cardset_presentation_path(@cardset), :class => "link-icon" do %>
+            <i class="mdi-action-view-carousel" data-toggle="tooltip" data-placement="top" title="<%= t('action_presentation') %>"></i>
+          <% end %>
+        </span>
         <h2 class="list-title">
           <%= link_to cardsets_path, :class => "link-icon icon-xl" do %>
             <i class="mdi-navigation-arrow-back"></i>
@@ -16,14 +21,6 @@
       <% Category.all.order("id asc").each do |category| %>
         <% if @cardset.cards.where(:category_id => category.id).any? %>
         <h4 class="list-title">
-          <span class="pull-right">
-            <%= link_to cardset_presentation_path(@cardset), :class => "link-icon" do %>
-              <i class="mdi-action-view-carousel" data-toggle="tooltip" data-placement="top" title="<%= t('action_presentation') %>"></i>
-            <% end %>
-            <%= link_to toggle_visible_cardset_category_path(:id => category, :cardset_id => @cardset), :remote => true, :class => "link-icon", :data => {:toggle => "visibility", :category_id => category.id} do %>
-              <i class="mdi-action-visibility" data-toggle="tooltip" data-placement="bottom" title="<%= t('action_visible_all') %>"></i>
-            <% end %>
-          </span>
           <%= category.title %> <small><%= pluralize(@cardset.cards.where(:category_id => category.id).size, t('card')) %></small>
         </h4>
         <div class="panel">
@@ -51,15 +48,11 @@
               </div>
               <div class="col-xs-2 actions">
                 <div class="pull-right">
-                  <%= link_to edit_cardset_card_path(:id => card, :cardset_id => @cardset), :class => "link-icon", :data => {:toggle => "tooltip", :placement => "bottom"}, :title => t('action_edit') do %>
+                  <%= link_to edit_cardset_card_path(:id => card, :cardset_id => @cardset), :class => "link-icon" do %>
                     <i class="mdi-content-create"></i>
                   <% end %>
-                  <%= link_to cardset_card_path(:id => card, :cardset_id => @cardset), method: :delete,
-                              data: { confirm: t('text_confirmdelete_single'), :toggle => "tooltip", :placement => "bottom" }, :class => "link-icon", :title => t('action_delete') do %>
+                  <%= link_to cardset_card_path(:id => card, :cardset_id => @cardset), method: :delete, :class => "link-icon" do %>
                     <i class="mdi-action-delete"></i>
-                  <% end %>
-                  <%= link_to toggle_visible_cardset_card_path(:id => card, :cardset_id => @cardset), :remote => true, :class => "link-icon", :data => {:toggle => "visibility", :card_id => card.id} do %>
-                    <i class="<%= card.visible ? 'mdi-action-visibility' : 'mdi-action-visibility-off' %>" data-toggle="tooltip" data-placement="bottom" title="<%= t('action_toggle_visibility') %>"></i>
                   <% end %>
                 </div>
               </div>

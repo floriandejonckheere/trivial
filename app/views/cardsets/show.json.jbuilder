@@ -3,5 +3,4 @@ json.cards @cardset.cards do |card|
   json.question card.question
   json.answer card.answer
   json.category card.category.id
-  json.visible card.visible
 end
