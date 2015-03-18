@@ -13,7 +13,7 @@
  *= require_self
  *= require bootstrap/bootstrap
  *= require bootstrap-material-design/ripples
- *= require bootstrap-material-design/material-wfont
+ *= require bootstrap-material-design/material
  *= require jquery.dropdown
  *= require animations
  */

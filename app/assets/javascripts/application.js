@@ -14,10 +14,11 @@
 //= require jquery_ujs
 //= require application
 //= require bootstrap/bootstrap
+//= require arrive
 //= require bootstrap-material-design/ripples
 //= require bootstrap-material-design/material
 //= require jquery.dropdown
-//= require canjs/can.jquery
+//= require knockout
 
 $(document).ready(function(){
   $.material.init();

@@ -3,7 +3,8 @@ source 'https://rubygems.org'
 source "https://rails-assets.org" do
   gem "rails-assets-bootstrap"
   gem "rails-assets-bootstrap-material-design"
-  gem "rails-assets-canjs"
+  gem "rails-assets-knockout"
+  gem "rails-assets-arrive"
 end
 
 # Postgres

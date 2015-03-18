@@ -94,12 +94,13 @@ GEM
       bundler (>= 1.3.0, < 2.0)
       railties (= 4.2.0)
       sprockets-rails
+    rails-assets-arrive (2.1.0)
     rails-assets-bootstrap (3.3.4)
       rails-assets-jquery (>= 1.9.1)
-    rails-assets-bootstrap-material-design (0.2.2)
+    rails-assets-bootstrap-material-design (0.3.0)
       rails-assets-jquery (~> 2.1.1)
-    rails-assets-canjs (2.2.0)
     rails-assets-jquery (2.1.3)
+    rails-assets-knockout (3.3.0)
     rails-deprecated_sanitizer (1.0.3)
       activesupport (>= 4.2.0.alpha)
     rails-dom-testing (1.0.5)
@@ -163,9 +164,10 @@ DEPENDENCIES
   jquery-rails
   pg
   rails (= 4.2.0)
+  rails-assets-arrive!
   rails-assets-bootstrap!
   rails-assets-bootstrap-material-design!
-  rails-assets-canjs!
+  rails-assets-knockout!
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
   spring
