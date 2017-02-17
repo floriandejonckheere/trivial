@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+ruby '2.0.0'
+
 source "https://rails-assets.org" do
   gem "rails-assets-bootstrap"
   gem "rails-assets-bootstrap-material-design"
