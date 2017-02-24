@@ -1,0 +1,16 @@
+version: '2'
+
+services:
+  app:
+    build: .
+    volumes:
+      - public:/app/public
+      - /var/run/postgresql/:/var/run/postgresql/
+      - sockets:/app/tmp/sockets/
+    env_file:
+      - trivial.env
+    restart: always
+
+volumes:
+  public: {}
+  sockets: {}

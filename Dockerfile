@@ -1,23 +1,22 @@
-FROM rails:latest
+FROM floriandejonckheere/docker-ruby-node:2.4.0
 
-MAINTAINER Florian Dejonckheer "<florian@floriandejonckheere.be"
+MAINTAINER Florian Dejonckheere <florian@floriandejonckheere.be>
 
-RUN mkdir /app
+# Create user and group
+RUN useradd trivial --create-home --home-dir /app/ --shell /bin/false
 
-ENV DB_USER trivial
-ENV DB_PASSWORD trivial
-
+WORKDIR /app/
 ENV RAILS_ENV production
 
-WORKDIR /tmp
-ADD Gemfile /tmp/
-ADD Gemfile.lock /tmp/
-RUN bundle install
+# Install Gem dependencies
+ADD Gemfile /app/
+ADD Gemfile.lock /app/
 
-ADD . /app
-WORKDIR /app
-RUN bundle exec rake assets:precompile
+RUN gem install bundler
 
-EXPOSE 3000
+RUN bundle install --deployment --without development test
 
-CMD ["./start.sh"]
+# Add application
+ADD . /app/
+
+CMD ["/app/docker-entrypoint.sh"]
