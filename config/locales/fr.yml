@@ -1,0 +1,36 @@
+fr:
+  card: "carte"
+  error: "erreur"
+
+  title_cardsets: "Jeux de cartes"
+  title_categories: "Catégories"
+
+  title_nocategories: "Aucune catégorie définie"
+  text_nocategories: "Vous n'avez créé aucune catégorie."
+  link_nocategories: "Cliquez ici pour créer une nouvelle catégorie."
+
+  title_nocardsets: "Aucune jeu de carte définie"
+  text_nocardsets: "Vous n'avez pas créé aucune jeu de cartes."
+  link_nocardsets: "Cliquez ici pour créer un jeu de cartes."
+
+  title_nocards: "Pas de cartes définies"
+  text_nocards: "Vous n'avez pas créé de cartes."
+  link_nocards:  "Cliquez ici pour créer une nouvelle carte."
+
+  category_errortext: "interdit l'enregistrement de cette catégorie"
+  cardset_errortext: "interdit l'enregistrement de cette jeu de cartes"
+  card_errortext: "interdit l'enregistrement de cette carte"
+
+  text_confirmdelete: "Voulez-vous vraiment continuer? Cela effacera de façon irréversible toutes les cartes dépendantes!"
+
+  text_showmorequestions: "Afficher %{number} plus"
+
+  text_loading_cards: "Chargement des cartes"
+
+  action_add: "Ajouter"
+  action_presentation: "Présentation"
+  action_back: "Retour"
+  action_edit: "Modifier"
+  action_update: "Enregistrer"
+  action_delete: "Supprimer"
+  action_answer: "Montrer la réponse"
