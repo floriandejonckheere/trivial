@@ -4,18 +4,18 @@
 
 <div class="row row-animated">
   <div class="col-md-8 col-md-offset-2">
-        <span class="pull-right">
-          <%= link_to cardset_presentation_path(@cardset), :class => "link-icon" do %>
-            <i class="mdi-action-view-carousel" data-toggle="tooltip" data-placement="top" title="<%= t('action_presentation') %>"></i>
-          <% end %>
-        </span>
-        <h2 class="list-title">
-          <%= link_to cardsets_path, :class => "link-icon icon-xl" do %>
-            <i class="mdi-navigation-arrow-back"></i>
-          <% end %>
-          <%= @cardset.title %> <small><%= pluralize(@cardset.cards.size, t('card')) %></small>
-        </h2>
-        <hr>
+      <span class="pull-right">
+        <%= link_to cardset_presentation_path(@cardset), :class => "link-icon" do %>
+          <i class="mdi-action-view-carousel" data-toggle="tooltip" data-placement="top" title="<%= t('action_presentation') %>"></i>
+        <% end %>
+      </span>
+      <h2 class="list-title">
+        <%= link_to cardsets_path, :class => "link-icon icon-xl" do %>
+          <i class="mdi-navigation-arrow-back"></i>
+        <% end %>
+        <%= @cardset.title %> <small><%= pluralize(@cardset.cards.size, t('card')) %></small>
+      </h2>
+      <hr>
     <% if Category.all.size != 0 %>
       <% if @cardset.cards.size != 0 %>
       <% Category.all.order("id asc").each do |category| %>
@@ -41,12 +41,12 @@
               <div class="hidden-xs col-sm-1">
                 <i class="mdi-communication-messenger icon-md"></i>
               </div>
-              <div class="col-xs-9 col-sm-9">
-                <div class="ellipsis width-md">
+              <div class="col-xs-6 col-sm-8">
+                <div class="ellipsis width-sm">
                   <strong><%= link_to strip_tags(card.question), edit_cardset_card_path(:id => card, :cardset_id => @cardset), :class => "link-black" %></strong>
                 </div>
               </div>
-              <div class="col-xs-2 actions">
+              <div class="col-xs-4 col-sm-2 actions">
                 <div class="pull-right">
                   <%= link_to edit_cardset_card_path(:id => card, :cardset_id => @cardset), :class => "link-icon" do %>
                     <i class="mdi-content-create"></i>
@@ -75,4 +75,5 @@
     </div>
     <% end %>
   </div>
+</div>
 </div>

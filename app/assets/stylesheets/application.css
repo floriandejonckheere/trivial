@@ -68,6 +68,7 @@ body {
   overflow: hidden;
   text-overflow: ellipsis;
   display: block;
+  max-width: 100%;
 }
 
 /* This isn't exactly responsive anymore */
@@ -89,7 +90,7 @@ body {
 
 /*
  * Panel list
- * 
+ *
  * */
 
 .panel-list {
@@ -128,7 +129,7 @@ body {
 
 /**
  * Panel actionbar
- * 
+ *
  * */
 
 .panel-actions {
@@ -177,7 +178,7 @@ body {
 
 /**
  * Icons
- * 
+ *
  * */
 .icon-xxl {
   font-size: 36px;
@@ -199,7 +200,7 @@ body {
 
 /**
  * Markdown edito
- * 
+ *
  * */
 .nav-btn-bar {
   border: 0 !important;
