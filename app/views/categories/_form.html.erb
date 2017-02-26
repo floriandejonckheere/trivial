@@ -11,14 +11,14 @@
   <% end %>
 
   <div class="form-group">
-    <%= f.text_field :title, :class => "form-control floating-label", :placeholder => :title, :required => "true" %>
+    <%= f.text_field :title, :class => "form-control floating-label", :placeholder => t('title').capitalize, :required => "true" %>
   </div>
 
   <div class="form-group">
-    <small><%= :Color %></small>
+    <small><%= t('color').capitalize %></small>
     <div>
       <% Category.colors.each do |c| %>
-        <div class="color-box withripple well-material-<%= c %>" data-toggle="tooltip" title="<%= c.capitalize %>">
+        <div class="color-box withripple well-material-<%= c %>" data-toggle="tooltip" title="<%= t(c).capitalize %>">
           <%= f.radio_button :color, c %>
           <div class="radio-label radio-label-inactive mdi-action-done"></div>
         </div>

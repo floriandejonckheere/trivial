@@ -1,36 +1,68 @@
 fr:
-  card: "carte"
-  error: "erreur"
+  title: titre
+  color: couleur
 
-  title_cardsets: "Jeux de cartes"
-  title_categories: "Catégories"
+  card: carte
+  cardset: jeu de cartes
+  error: erreur
+  category: catégorie
 
-  title_nocategories: "Aucune catégorie définie"
-  text_nocategories: "Vous n'avez créé aucune catégorie."
-  link_nocategories: "Cliquez ici pour créer une nouvelle catégorie."
+  question: question
+  answer: réponse
 
-  title_nocardsets: "Aucune jeu de carte définie"
-  text_nocardsets: "Vous n'avez pas créé aucune jeu de cartes."
-  link_nocardsets: "Cliquez ici pour créer un jeu de cartes."
+  title_new_cardset: Nouveau jeu de cartes
+  title_new_category: Nouvelle catégorie
+  title_add_card: Nouvelle carte
 
-  title_nocards: "Pas de cartes définies"
-  text_nocards: "Vous n'avez pas créé de cartes."
-  link_nocards:  "Cliquez ici pour créer une nouvelle carte."
+  title_cardsets: Jeux de cartes
+  title_categories: Catégories
 
-  category_errortext: "interdit l'enregistrement de cette catégorie"
-  cardset_errortext: "interdit l'enregistrement de cette jeu de cartes"
-  card_errortext: "interdit l'enregistrement de cette carte"
+  title_nocategories: Aucune catégorie définie
+  text_nocategories: Vous n'avez créé aucune catégorie.
+  link_nocategories: Cliquez ici pour créer une nouvelle catégorie.
 
-  text_confirmdelete: "Voulez-vous vraiment continuer? Cela effacera de façon irréversible toutes les cartes dépendantes!"
+  title_nocardsets: Aucune jeu de carte définie
+  text_nocardsets: Vous n'avez pas créé aucune jeu de cartes.
+  link_nocardsets: Cliquez ici pour créer un jeu de cartes.
 
-  text_showmorequestions: "Afficher %{number} plus"
+  title_nocards: Pas de cartes définies
+  text_nocards: Vous n'avez pas créé de cartes.
+  link_nocards:  Cliquez ici pour créer une nouvelle carte.
 
-  text_loading_cards: "Chargement des cartes"
+  category_errortext: interdit l'enregistrement de cette catégorie
+  cardset_errortext: interdit l'enregistrement de cette jeu de cartes
+  card_errortext: interdit l'enregistrement de cette carte
 
-  action_add: "Ajouter"
-  action_presentation: "Présentation"
-  action_back: "Retour"
-  action_edit: "Modifier"
-  action_update: "Enregistrer"
-  action_delete: "Supprimer"
-  action_answer: "Montrer la réponse"
+  text_confirmdelete: Voulez-vous vraiment continuer? Cela effacera de façon irréversible toutes les cartes dépendantes!
+
+  text_showmorequestions: Afficher %{number} plus
+
+  text_loading_cards: Chargement des cartes
+
+  action_add: Ajouter
+  action_presentation: Présentation
+  action_back: Retour
+  action_edit: Modifier
+  action_update: Enregistrer
+  action_delete: Supprimer
+  action_answer: Montrer la réponse
+
+  red: rouge
+  pink: rose
+  purple: violet
+  deep-purple: violet foncé
+  indigo: indigo
+  blue: blue
+  light-blue: blue clair
+  cyan: cyan
+  teal: sarcelle
+  green: vert
+  light-green: vert clair
+  lime: citron vert
+  yellow: jaune
+  amber: ambre
+  orange: orange
+  deep-orange: orange foncé
+  brown: marron
+  grey: gris
+  blue-grey: blue gris

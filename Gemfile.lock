@@ -1,4 +1,13 @@
 GIT
+  remote: git://github.com/svenfuchs/rails-i18n.git
+  revision: f8c83ec753439d7286b9168bbb246e354866cb9e
+  branch: rails-4-x
+  specs:
+    rails-i18n (4.0.9)
+      i18n (~> 0.7)
+      railties (~> 4.0)
+
+GIT
   remote: https://github.com/nulldb/nulldb.git
   revision: 722212b2c935d564701a3545824f54e283620f40
   specs:
@@ -172,6 +181,7 @@ DEPENDENCIES
   rails-assets-bootstrap!
   rails-assets-bootstrap-material-design!
   rails-assets-knockout!
+  rails-i18n!
   sass-rails
   spring
   sqlite3

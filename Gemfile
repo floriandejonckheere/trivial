@@ -9,6 +9,8 @@ source "https://rails-assets.org" do
   gem "rails-assets-arrive"
 end
 
+# Rails i18n
+gem 'rails-i18n', github: 'svenfuchs/rails-i18n', branch: 'rails-4-x'
 # Use Puma as application server
 gem 'puma'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'

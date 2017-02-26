@@ -32,7 +32,7 @@ $(function(){
 
   /**
    * (View)Models
-   * 
+   *
    * */
 
   // Category Model
@@ -61,7 +61,7 @@ $(function(){
     categories: [],
     showCard: function(category){
       if(category.current() == category.cards().length){
-        if(confirm('You have seen all cards. Would you like to reshuffle all cards?')){
+        if(confirm('Vous avez vu toutes les cartes. Voulez-vous remanier toutes les cartes?')){
           var arr = category.cards();
           shuffle(arr);
           category.cards(arr);
@@ -94,7 +94,7 @@ $(function(){
 
   /**
    * Application logic
-   * 
+   *
    * */
 
   var width = 0;

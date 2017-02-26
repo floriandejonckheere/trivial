@@ -10,7 +10,7 @@
 <% end %>
 
 <div class="form-group">
-  <%= f.text_field :title, :class => "form-control floating-label", :placeholder => :title, :required => "true" %>
+  <%= f.text_field :title, :class => "form-control floating-label", :placeholder => t('title').capitalize, :required => "true" %>
 </div>
 
 <% if params[:action] != 'new' %>
