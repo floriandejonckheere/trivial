@@ -16,11 +16,11 @@ RUN gem install bundler
 
 RUN bundle install --deployment --without development test
 
+# Add application
+ADD . /app/
+
 # Precompile assets
 RUN DB_ADAPTER=nulldb SECRET_KEY_BASE=foo bundle exec rake assets:clobber
 RUN DB_ADAPTER=nulldb SECRET_KEY_BASE=foo bundle exec rake assets:precompile
-
-# Add application
-ADD . /app/
 
 CMD ["/app/docker-entrypoint.sh"]

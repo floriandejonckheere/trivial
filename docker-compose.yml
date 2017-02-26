@@ -4,7 +4,7 @@ services:
   app:
     build: .
     volumes:
-      - public:/app/public
+      - public:/app/public/
       - /var/run/postgresql/:/var/run/postgresql/
       - sockets:/app/tmp/sockets/
     env_file:
