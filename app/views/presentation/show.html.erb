@@ -36,6 +36,16 @@
   <div class="padding-lg">
     <div class="row">
       <div class="col-xs-10 col-xs-offset-1">
+        <h2 class="list-title">
+          <%= link_to cardset_path(@cardset), :class => "link-icon icon-xl", :data => {:toggle => 'tooltip', :placement => 'top' }, :title => t('action_back') do %>
+            <i class="mdi-navigation-arrow-back"></i>
+          <% end %>
+        </h2>
+      </div>
+    </div>
+    <hr>
+    <div class="row">
+      <div class="col-xs-10 col-xs-offset-1">
         <div class="row" data-bind="foreach: categories">
           <div class="col-xs-4 clearfix">
             <div class="well text-white cursor-pointer withripple" data-bind="css: color, click: $parent.showCard">
