@@ -47,6 +47,8 @@ fr:
   action_delete: Supprimer
   action_answer: Montrer la réponse
 
+  cards_remaining: cartes restantes
+
   red: rouge
   pink: rose
   purple: violet

@@ -51,7 +51,7 @@
             <div class="well text-white cursor-pointer withripple" data-bind="css: color, click: $parent.showCard">
               <div class="panel-body text-center">
                 <h4 data-bind="text: title"></h4>
-                <small><span data-bind="text: (cards().length - current())">0</span> cards remaining</small>
+                <small><span data-bind="text: (cards().length - current())">0</span> <%= t 'cards_remaining' %></small>
                 <hr class="hr-hidden">
               </div>
             </div>
