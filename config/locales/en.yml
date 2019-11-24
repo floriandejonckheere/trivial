@@ -1,0 +1,70 @@
+en:
+  title: title
+  color: colour
+
+  card: card
+  cardset: cardset
+  error: error
+  category: category
+
+  question: question
+  answer: answer
+
+  title_new_cardset: New cardset
+  title_new_category: New category
+  title_add_card: New card
+
+  title_cardsets: Cardsets
+  title_categories: Categories
+
+  title_nocategories: No categories
+  text_nocategories: You have not created any categories yet.
+  link_nocategories: Create a new category
+
+  title_nocardsets: No cardsets
+  text_nocardsets: You have not created any cardsets yet.
+  link_nocardsets: Create a new cardset
+
+  title_nocards: No cards
+  text_nocards: You have not created any cards yet.
+  link_nocards:  Create a new card
+
+  category_errortext: cannot save the category
+  cardset_errortext: cannot save the cardset
+  card_errortext: cannot save the card
+
+  text_confirmdelete: Are you sure you wish to continue? This operation will irreversibly delete all the cards!
+
+  text_showmorequestions: Show %{number} more
+
+  text_loading_cards: Loading cards
+
+  action_add: Add
+  action_presentation: Presentation
+  action_back: Back
+  action_edit: Edit
+  action_update: Update
+  action_delete: Delete
+  action_answer: Show answer
+
+  cards_remaining: remaining cards
+
+  red: red
+  pink: pink
+  purple: purple
+  deep-purple: deep purple
+  indigo: indigo
+  blue: blue
+  light-blue: light blue
+  cyan: cyan
+  teal: teal
+  green: green
+  light-green: light green
+  lime: lime
+  yellow: yellow
+  amber: amber
+  orange: orange
+  deep-orange: deep orange
+  brown: brown
+  grey: grey
+  blue-grey: blue grey
