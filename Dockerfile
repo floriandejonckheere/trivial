@@ -1,8 +1,8 @@
-FROM timbru31/ruby-node:slim
+FROM registry.dejonckhee.re/docker-ruby-node:2.6.5-13.1.0
 
 MAINTAINER Florian Dejonckheere <florian@floriandejonckheere.be>
 
-RUN apt-get update && apt-get install -y git build-essential libpq-dev libxml2-dev libxslt1-dev
+RUN apk add --no-cache build-base git postgresql-dev libxml2-dev libxslt-dev
 
 ENV APP_HOME /app/
 ENV RAILS_ENV production
@@ -18,9 +18,7 @@ RUN bundle install --deployment --without development test
 
 ADD . $APP_HOME
 
-# Precompile assets
-RUN DB_ADAPTER=nulldb SECRET_KEY_BASE=foo bundle exec rake assets:clobber
-RUN DB_ADAPTER=nulldb SECRET_KEY_BASE=foo bundle exec rake assets:precompile
+RUN bundle exec rake assets:precompile
 
 VOLUME $APP_HOME/public/
 

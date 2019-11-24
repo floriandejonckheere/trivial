@@ -10,7 +10,7 @@ source "https://rails-assets.org" do
 end
 
 # Rails i18n
-gem 'rails-i18n', github: 'svenfuchs/rails-i18n', branch: 'rails-4-x'
+gem 'rails-i18n', git: 'https://github.com/svenfuchs/rails-i18n.git', branch: 'rails-4-x'
 # Use Puma as application server
 gem 'puma'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
@@ -38,6 +38,9 @@ gem 'jbuilder', '~> 2.0'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+# Timezone data
+gem 'tzinfo-data'
+
 group :development, :test do
   # Use sqlite3 as the database for Active Record
   gem 'sqlite3'
@@ -57,5 +60,5 @@ group :production do
   gem 'pg'
 
   # Dummy database for asset precompilation
-  gem 'activerecord-nulldb-adapter', :git => 'https://github.com/nulldb/nulldb.git'
+  gem 'activerecord-nulldb-adapter', git: 'https://github.com/nulldb/nulldb.git'
 end
