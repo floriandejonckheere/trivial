@@ -61,7 +61,7 @@ $(function(){
     categories: [],
     showCard: function(category){
       if(category.current() == category.cards().length){
-        if(confirm('Vous avez vu toutes les cartes. Voulez-vous remanier toutes les cartes?')){
+        if(confirm('You have seen all the cards. Do you want to reshuffle?')){
           var arr = category.cards();
           shuffle(arr);
           category.cards(arr);
