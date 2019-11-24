@@ -22,5 +22,10 @@ module Trivial
 
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true
+
+    # Make belongs_to associations required
+    config.active_record.belongs_to_required_by_default = true
+
+    ActiveSupport.halt_callback_chains_on_return_false = false
   end
 end

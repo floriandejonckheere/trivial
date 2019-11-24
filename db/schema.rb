@@ -1,4 +1,3 @@
-# encoding: UTF-8
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -20,10 +19,9 @@ ActiveRecord::Schema.define(version: 20150318145617) do
     t.integer  "cardset_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.index ["cardset_id"], name: "index_cards_on_cardset_id"
+    t.index ["category_id"], name: "index_cards_on_category_id"
   end
-
-  add_index "cards", ["cardset_id"], name: "index_cards_on_cardset_id"
-  add_index "cards", ["category_id"], name: "index_cards_on_category_id"
 
   create_table "cardsets", force: :cascade do |t|
     t.text     "title"
