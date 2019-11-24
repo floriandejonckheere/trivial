@@ -24,4 +24,5 @@ VOLUME $APP_HOME/public/
 
 EXPOSE 3000
 
+ENTRYPOINT ["docker-entrypoint.sh"]
 CMD ["bundle", "exec", "puma", "-p", "3000"]
