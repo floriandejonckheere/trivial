@@ -14,7 +14,7 @@ gem 'rails-i18n', git: 'https://github.com/svenfuchs/rails-i18n.git', branch: 'r
 # Use Puma as application server
 gem 'puma'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '5.0'
+gem 'rails', '5.1'
 # Use SCSS for stylesheets
 gem 'sass-rails'
 # Use Uglifier as compressor for JavaScript assets
@@ -42,6 +42,9 @@ gem 'jbuilder'
 gem 'tzinfo-data'
 
 group :development, :test do
+  # Use listen gem
+  gem 'listen'
+
   # Use sqlite3 as the database for Active Record
   gem 'sqlite3', '~> 1.3.6'
 
