@@ -10,11 +10,11 @@ source 'https://rails-assets.org' do
 end
 
 # Rails i18n
-gem 'rails-i18n', git: 'https://github.com/svenfuchs/rails-i18n.git', branch: 'rails-5-x'
+gem 'rails-i18n', '~> 6.0.0'
 # Use Puma as application server
 gem 'puma'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '5.1'
+gem 'rails', '6.0'
 # Use SCSS for stylesheets
 gem 'sass-rails'
 # Use Uglifier as compressor for JavaScript assets
@@ -46,7 +46,7 @@ group :development, :test do
   gem 'listen'
 
   # Use sqlite3 as the database for Active Record
-  gem 'sqlite3', '~> 1.3.6'
+  gem 'sqlite3'
 
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
