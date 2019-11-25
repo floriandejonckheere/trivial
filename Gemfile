@@ -56,6 +56,9 @@ group :development, :test do
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
+
+  # Boot apps faster
+  gem 'bootsnap'
 end
 
 group :production do
