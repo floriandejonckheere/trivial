@@ -18,7 +18,7 @@ RUN bundle install --deployment --without development test
 
 ADD . $APP_HOME
 
-RUN bundle exec rake assets:precompile
+RUN bundle exec rails assets:precompile SECRET_KEY_BASE=foo
 
 VOLUME $APP_HOME/public/
 
