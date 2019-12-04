@@ -1,0 +1,70 @@
+nl:
+  title: titel
+  color: kleur
+
+  card: kaart
+  cardset: kaartspel
+  error: fout
+  category: categorie
+
+  question: vraag
+  answer: antwoord
+
+  title_new_cardset: Nieuw kaartspel
+  title_new_category: Nieuwe categorie
+  title_add_card: Nieuwe kaart
+
+  title_cardsets: Kaartspellen
+  title_categories: Categorieën
+
+  title_nocategories: Geen categorieën
+  text_nocategories: Je hebt nog geen categorieën gecreēerd
+  link_nocategories: Creëer een nieuwe categorie
+
+  title_nocardsets: Geen kaartspellen
+  text_nocardsets: Je hebt nog geen kaartspellen gecreëerd
+  link_nocardsets: Creëer een nieuw kaartspel
+
+  title_nocards: Geen kaarten
+  text_nocards: Je hebt nog geen kaarten gecreëerd
+  link_nocards:  Creëer een nieuwe kaart
+
+  category_errortext: kan de categorie niet opslaan
+  cardset_errortext: kan het kaartspel niet opslaan
+  card_errortext: kan de kaart niet opslaan
+
+  text_confirmdelete: Ben je zeker dat je dit wilt doen? Dit zal alle kaarten verwijderen!
+
+  text_showmorequestions: Toon %{number} meer
+
+  text_loading_cards: Kaarten laden
+
+  action_add: Toevoegen
+  action_presentation: Presentatie
+  action_back: Terug
+  action_edit: Bewerken
+  action_update: Opslaan
+  action_delete: Verwijderen
+  action_answer: Toon antwoord
+
+  cards_remaining: kaarten resterend
+
+  red: rood
+  pink: roze
+  purple: paars
+  deep-purple: donkerpaars
+  indigo: indigo
+  blue: blauw
+  light-blue: lichtblauw
+  cyan: cyaan
+  teal: blauwgroen
+  green: groen
+  light-green: lichtgroen
+  lime: limoen
+  yellow: geel
+  amber: amber
+  orange: oranje
+  deep-orange: donkeroranje
+  brown: bruin
+  grey: grijs
+  blue-grey: blauwgrijs
