@@ -132,9 +132,7 @@ GEM
       sprockets-rails (>= 2.0.0)
     rails-assets-arrive (2.4.1)
     rails-assets-bootstrap (4.3.1)
-    rails-assets-bootstrap-material-design (0.3.0)
-      rails-assets-jquery (~> 2.1.1)
-    rails-assets-jquery (2.1.4)
+    rails-assets-bootstrap-material-design (4.1.1)
     rails-assets-knockout (3.5.0)
     rails-dom-testing (2.0.3)
       activesupport (>= 4.2.0)
@@ -257,7 +255,7 @@ DEPENDENCIES
   rails (= 6.0)
   rails-assets-arrive!
   rails-assets-bootstrap (~> 4)!
-  rails-assets-bootstrap-material-design (~> 0.3.0)!
+  rails-assets-bootstrap-material-design (~> 4.1.1)!
   rails-assets-knockout!
   rails-i18n (~> 6.0.0)
   rspec
