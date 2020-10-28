@@ -23,4 +23,5 @@ services:
     restart: always
 
 volumes:
+  postgres:
   bundle:
