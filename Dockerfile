@@ -1,28 +1,52 @@
-FROM registry.dejonckhee.re/docker-ruby-node:2.6.5-13.1.0
+FROM ruby:2.7-alpine
 
 MAINTAINER Florian Dejonckheere <florian@floriandejonckheere.be>
 
-RUN apk add --no-cache build-base git postgresql-dev libxml2-dev libxslt-dev
+ENV RUNTIME_DEPS postgresql openssh
+ENV BUILD_DEPS build-base curl-dev git postgresql-dev libxml2-dev libxslt-dev nodejs
+
+ENV BUNDLER_VERSION 2.1.4
+
+ENV LC_ALL en_US.UTF-8
+ENV LANG en_US.UTF-8
 
 ENV APP_HOME /app/
-ENV RAILS_ENV production
+WORKDIR $APP_HOME/
 
-RUN mkdir -p $APP_HOME
-WORKDIR $APP_HOME
+# Add user
+ARG USER=docker
+ARG UID=1000
+ARG GID=1000
 
-RUN gem install bundler
+RUN addgroup -g $GID $USER
+RUN adduser -D -u $UID -G $USER -h $APP_HOME/ $USER
 
-ADD Gemfile* $APP_HOME
+# Install system dependencies
+RUN apk add --no-cache $BUILD_DEPS $RUNTIME_DEPS
 
-RUN bundle install --deployment --without development test
+# Install Bundler
+RUN gem update --system && \
+  gem install bundler --version "$BUNDLER_VERSION" --force
 
-ADD . $APP_HOME
+# Install Gem dependencies
+ADD Gemfile $APP_HOME/
+ADD Gemfile.lock $APP_HOME/
 
+RUN bundle install
+
+# Add application
+ADD . $APP_HOME/
+
+RUN mkdir -p $APP_HOME/tmp/pids/
+
+RUN chown -R $UID:$GID $APP_HOME/
+
+# Build assets
 RUN bundle exec rails assets:precompile SECRET_KEY_BASE=foo
 
 VOLUME $APP_HOME/public/
 
-EXPOSE 3000
+# Change user
+USER $USER
 
-ENTRYPOINT ["docker-entrypoint.sh"]
-CMD ["bundle", "exec", "puma", "-p", "3000"]
+CMD ["bundle", "exec", "puma", "-C", "config/puma.rb"]

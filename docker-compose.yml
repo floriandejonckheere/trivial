@@ -1,16 +1,26 @@
-version: '2'
+version: "3.7"
 
 services:
+  postgres:
+    image: postgres:12
+    volumes:
+      - postgres:/var/lib/postgresql/data/
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+
   app:
     build: .
     volumes:
-      - public:/app/public/
-      - /var/run/postgresql/:/var/run/postgresql/
-      - sockets:/app/tmp/sockets/
+      - .:/app/:cached
+      - bundle:/usr/local/bundle/
+    depends_on:
+      - postgres
     env_file:
-      - trivial.env
+      - .env.development
     restart: always
 
 volumes:
-  public: {}
-  sockets: {}
+  bundle:
