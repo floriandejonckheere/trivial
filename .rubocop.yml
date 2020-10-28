@@ -15,7 +15,9 @@ AllCops:
 Layout/LineLength:
   Max: 120
   Exclude:
-    - spec/**/*
+    - spec/**/*.rb
+    - db/seeds/**/*.rb
+    - lib/tasks/**/*.rake
 
 Layout/MultilineMethodCallIndentation:
   EnforcedStyle: indented
@@ -36,10 +38,10 @@ Metrics/AbcSize:
 
 Metrics/BlockLength:
   Exclude:
-    - config/**/*
-    - db/migrate/*
-    - lib/tasks/*
-    - spec/**/*
+    - config/**/*.rb
+    - db/**/*.rb
+    - lib/tasks/**/*.rake
+    - spec/**/*.rb
 
 Metrics/MethodLength:
   Max: 25
