@@ -1,6 +1,9 @@
 source 'https://rubygems.org'
 
-ruby '2.7.2'
+ruby "~> 2.7"
+
+source "https://rubygems.org"
+git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 source 'https://rails-assets.org' do
   gem 'rails-assets-bootstrap', '~> 3'
@@ -29,6 +32,9 @@ gem 'turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder'
 
+# Use PostgreSQL as database
+gem 'pg'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
@@ -42,6 +48,12 @@ gem 'jbuilder'
 gem 'tzinfo-data'
 
 group :development, :test do
+  # Call 'byebug' anywhere in the code to stop execution and get a debugger console
+  gem "byebug"
+
+  # Debugger
+  gem "debase"
+
   # Use listen gem
   gem 'listen'
 
@@ -59,12 +71,25 @@ group :development, :test do
 
   # Boot apps faster
   gem 'bootsnap'
-end
 
-group :production do
-  # Use PostgreSQL as database
-  gem 'pg'
+  # RuboCop
+  gem "rubocop"
+  gem "rubocop-performance"
+  gem "rubocop-rails"
+  gem "rubocop-rspec"
 
-  # Dummy database for asset precompilation
-  gem 'activerecord-nulldb-adapter', git: 'https://github.com/nulldb/nulldb.git'
+  # RSpec
+  gem "rspec"
+  gem "rspec-rails"
+
+  # Shoulda-matchers
+  gem "shoulda-matchers"
+
+  # Time behaviour
+  gem "timecop"
+
+  # Factory testing pattern
+  gem "factory_bot"
+  gem "factory_bot_rails"
+  gem "ffaker"
 end
