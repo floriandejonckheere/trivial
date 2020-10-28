@@ -15,5 +15,10 @@ module Trivial
     # Application configuration can go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded after loading
     # the framework and any gems in your application.
+
+    config.autoload_paths << Rails.root.join("lib")
+
+    # Eager load extensions
+    Dir[Rails.root.join("lib/ext/**/*.rb")].each { |f| load f }
   end
 end
