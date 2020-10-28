@@ -1,7 +1,7 @@
-class CategoriesController < ApplicationController
+# frozen_string_literal: true
 
-  def index
-  end
+class CategoriesController < ApplicationController
+  def index; end
 
   def new
     @category = Category.new
@@ -12,7 +12,7 @@ class CategoriesController < ApplicationController
     if @category.save
       redirect_to categories_path
     else
-      render 'new'
+      render "new"
     end
   end
 
@@ -26,7 +26,7 @@ class CategoriesController < ApplicationController
     if @category.update(params[:category].permit(:title, :color))
       redirect_to categories_path
     else
-      render 'edit'
+      render "edit"
     end
   end
 
@@ -36,5 +36,4 @@ class CategoriesController < ApplicationController
 
     redirect_to categories_path
   end
-
 end

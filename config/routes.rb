@@ -1,13 +1,13 @@
+# frozen_string_literal: true
+
 Rails.application.routes.draw do
-
   resources :cardsets do
-    resources :cards, :except => [:index, :show]
+    resources :cards, except: [:index, :show]
 
-    get '/presentation', :controller => "presentation", :action => "show"
+    get "/presentation", controller: "presentation", action: "show"
   end
 
-  resources :categories, :except => :show
+  resources :categories, except: :show
 
-  root :to => redirect('/cardsets')
-
+  root to: redirect("/cardsets")
 end

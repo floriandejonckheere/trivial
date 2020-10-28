@@ -1,5 +1,6 @@
-class PresentationController < ApplicationController
+# frozen_string_literal: true
 
+class PresentationController < ApplicationController
   layout "presentation"
 
   def show
@@ -7,5 +8,4 @@ class PresentationController < ApplicationController
     @categories = Category.find(@cardset.cards.pluck(:category_id).uniq)
     respond_to :html
   end
-
 end

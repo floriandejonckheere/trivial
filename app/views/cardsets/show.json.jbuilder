@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 json.cards @cardset.cards do |card|
   json.id card.id
   json.question card.question

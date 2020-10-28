@@ -1,7 +1,7 @@
-class CardsetsController < ApplicationController
+# frozen_string_literal: true
 
-  def index
-  end
+class CardsetsController < ApplicationController
+  def index; end
 
   def new
     @cardset = Cardset.new
@@ -12,7 +12,7 @@ class CardsetsController < ApplicationController
     if @cardset.save
       redirect_to cardsets_path
     else
-      render 'new'
+      render "new"
     end
   end
 
@@ -26,7 +26,7 @@ class CardsetsController < ApplicationController
     if @cardset.update(params[:cardset].permit(:title))
       redirect_to cardsets_path
     else
-      render 'edit'
+      render "edit"
     end
   end
 
@@ -41,13 +41,11 @@ class CardsetsController < ApplicationController
     @cardset = Cardset.find(params[:id])
   end
 
-  
   def toggle_visible
-    @cards = Cardset.find(params[:cardset_id]).cards.where(:category => params[:id])
+    @cards = Cardset.find(params[:cardset_id]).cards.where(category: params[:id])
     @cards.each do |card|
-      card.update_attribute(:visible, true)
+      card.update!(visible: true)
     end
-    render :nothing => true
+    render nothing: true
   end
-
 end

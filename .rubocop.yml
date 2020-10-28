@@ -42,7 +42,7 @@ Metrics/BlockLength:
     - spec/**/*
 
 Metrics/MethodLength:
-  Max: 20
+  Max: 25
   Exclude:
     - db/migrate/*
     - lib/tasks/*
