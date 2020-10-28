@@ -1,0 +1,70 @@
+name: Continuous Deployment
+
+on:
+  push:
+    tags:
+      - 'production'
+  workflow_dispatch:
+
+jobs:
+  app:
+    name: Deploy application
+    if: "!contains(github.event.head_commit.message, 'ci skip') && !contains(github.event.head_commit.message, 'skip ci')"
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - uses: chrnorm/deployment-action@releases/v1
+        name: Create GitHub deployment
+        id: deployment
+        with:
+          token: ${{ github.token }}
+          environment: production
+
+      - name: Copy files
+        uses: appleboy/scp-action@master
+        with:
+          host: ${{ secrets.DEPLOY_SSH_HOST }}
+          username: ${{ secrets.DEPLOY_SSH_USER }}
+          key: ${{ secrets.DEPLOY_SSH_KEY }}
+          source: ops/docker-compose.yml
+          target: $HOME
+          strip_components: 1
+
+      - name: Deploy application
+        uses: appleboy/ssh-action@master
+        env:
+          GITHUB_USER: ${{ github.actor }}
+          GITHUB_TOKEN: ${{ github.token }}
+        with:
+          host: ${{ secrets.DEPLOY_SSH_HOST }}
+          username: ${{ secrets.DEPLOY_SSH_USER }}
+          key: ${{ secrets.DEPLOY_SSH_KEY }}
+          script_stop: true
+          envs: "GITHUB_USER,GITHUB_TOKEN"
+          script: |
+            echo "Pulling latest images"
+            docker login https://docker.pkg.github.com -u ${GITHUB_USER} -p ${GITHUB_TOKEN}
+            docker-compose pull --quiet
+            echo "Running migrations"
+            docker-compose run --rm app rails db:migrate
+            echo "Recreating containers"
+            docker-compose up -d
+
+
+      - name: Update deployment status (success)
+        if: success()
+        uses: chrnorm/deployment-status@releases/v1
+        with:
+          token: ${{ github.token }}
+          state: "success"
+          deployment_id: ${{ steps.deployment.outputs.deployment_id }}
+
+      - name: Update deployment status (failure)
+        if: failure()
+        uses: chrnorm/deployment-status@releases/v1
+        with:
+          token: "${{ github.token }}"
+          state: "failure"
+          deployment_id: ${{ steps.deployment.outputs.deployment_id }}
