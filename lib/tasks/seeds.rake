@@ -36,7 +36,7 @@ namespace :seeds do
       # frozen_string_literal: true
       
       ActiveRecord::Base.transaction do
-        puts "-- Creating cardsets"
+        puts "-- Creating cards"
 
     HERE
 

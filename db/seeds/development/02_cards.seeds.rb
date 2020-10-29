@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 ActiveRecord::Base.transaction do
-  puts "-- Creating cardsets"
+  puts "-- Creating cards"
 
   easy_difficulty = Cardset.find_by!(name: "Easy difficulty")
   moderate_difficulty = Cardset.find_by!(name: "Moderate difficulty")
@@ -130,8 +130,6 @@ ActiveRecord::Base.transaction do
   Card.find_or_create_by!(category: history, cardset: easy_difficulty, question: "What year did World War I begin?", answer: "1914")
   Card.find_or_create_by!(category: history, cardset: easy_difficulty, question: "Which of the following was Brazil was a former colony under?", answer: "Portugal")
   Card.find_or_create_by!(category: history, cardset: easy_difficulty, question: "What was the name commonly given to the ancient trade routes that connected the East and West of Eurasia?", answer: "Silk Road")
-
-
 
   Card.find_or_create_by!(category: animals, cardset: easy_difficulty, question: "What is the fastest  land animal?", answer: "Cheetah")
   Card.find_or_create_by!(category: animals, cardset: easy_difficulty, question: "What is the scientific name for modern day humans?", answer: "Homo Sapiens")
@@ -276,7 +274,6 @@ ActiveRecord::Base.transaction do
   Card.find_or_create_by!(category: politics, cardset: moderate_difficulty, question: "The Watergate Scandal occured in what year?", answer: "1972")
   Card.find_or_create_by!(category: politics, cardset: moderate_difficulty, question: "Between 1973 to 1990, what country was ruled by dictator Augusto Pinochet?", answer: "Chile")
 
-
   Card.find_or_create_by!(category: animals, cardset: moderate_difficulty, question: "What does \"hippopotamus\" mean and in what langauge?", answer: "River Horse (Greek)")
   Card.find_or_create_by!(category: animals, cardset: moderate_difficulty, question: "What type of animal is a natterjack?", answer: "Toad")
   Card.find_or_create_by!(category: animals, cardset: moderate_difficulty, question: "Cashmere is the wool from which kind of animal?", answer: "Goat")
@@ -419,7 +416,6 @@ ActiveRecord::Base.transaction do
   Card.find_or_create_by!(category: politics, cardset: hard_difficulty, question: "In June 2017, Saudi Arabia and Egypt broke off ties with which country over its supposed support for terrorism?", answer: "Qatar")
   Card.find_or_create_by!(category: politics, cardset: hard_difficulty, question: "Who was the longest-serving senator in US history, serving from 1959 to 2010?", answer: "Robert Byrd")
   Card.find_or_create_by!(category: politics, cardset: hard_difficulty, question: "What year did the effort to deploy the Common Core State Standards (CCSS) in the US begin?", answer: "2009")
-
 
   Card.find_or_create_by!(category: animals, cardset: hard_difficulty, question: "What scientific family does the Aardwolf belong to?", answer: "Hyaenidae")
   Card.find_or_create_by!(category: animals, cardset: hard_difficulty, question: "What is the scientific name of the cheetah?", answer: "Acinonyx jubatus")
