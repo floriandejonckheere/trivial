@@ -47,6 +47,9 @@ group :development, :test do
   # Debugger
   gem "debase"
 
+  # Database annotations
+  gem "annotate"
+
   # Use listen gem
   gem "listen"
 
