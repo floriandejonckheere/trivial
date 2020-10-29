@@ -1,0 +1,27 @@
+<div class="row row-animated">
+  <div class="col-lg-8 col-lg-offset-2">
+    <h2 class="list-title">
+      <%= t('sign_in') %>
+    </h2>
+    <hr>
+    <div class="well well-lg">
+      <div class="panel-body">
+        <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+          <%= render "devise/shared/error_messages" %>
+
+          <div class="form-group">
+            <%= f.email_field :email, class: "form-control floating-label", placeholder: t('email'), required: "true", autofocus: true, autocomplete: "email" %>
+          </div>
+
+          <div class="form-group">
+            <%= f.password_field :password, class: "form-control floating-label", placeholder: t('password'), required: "true", autocomplete: "current-password" %>
+          </div>
+
+          <div class="actions">
+            <%= f.submit t("sign_in"), class: "btn" %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

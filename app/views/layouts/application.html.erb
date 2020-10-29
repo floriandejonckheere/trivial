@@ -18,10 +18,19 @@
     <a class="navbar-brand" href="/cardsets">Trivial</a>
   </div>
   <div class="navbar-collapse collapse navbar-warning-collapse">
-    <ul class="nav navbar-nav">
-      <%= nav_link t('title_cardsets'), cardsets_path %>
-      <%= nav_link t('title_categories'), categories_path %>
-    </ul>
+    <% if user_signed_in? %>
+      <ul class="nav navbar-nav">
+        <%= nav_link t('title_cardsets'), cardsets_path %>
+        <%= nav_link t('title_categories'), categories_path %>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li><%= link_to current_user.name, destroy_user_session_path, method: :delete %></li>
+      </ul>
+    <% else %>
+      <ul class="nav navbar-nav navbar-right">
+        <li><%= link_to t('sign_in'), new_user_session_path %></li>
+      </ul>
+    <% end %>
   </div>
 </nav>
 <main>
