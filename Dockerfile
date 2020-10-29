@@ -37,14 +37,14 @@ RUN bundle install
 # Add application
 ADD . $APP_HOME/
 
-RUN mkdir -p $APP_HOME/tmp/pids/
-
-RUN chown -R $UID:$GID $APP_HOME/
-
 # Build assets
 RUN bundle exec rails assets:precompile SECRET_KEY_BASE=foo
 
 VOLUME $APP_HOME/public/
+
+RUN mkdir -p $APP_HOME/tmp/pids/
+
+RUN chown -R $UID:$GID $APP_HOME/
 
 # Change user
 USER $USER
