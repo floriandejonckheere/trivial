@@ -1,18 +1,9 @@
 # frozen_string_literal: true
 
-source "https://rubygems.org"
-
 ruby "~> 2.7"
 
 source "https://rubygems.org"
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
-
-source "https://rails-assets.org" do
-  gem "rails-assets-arrive"
-  gem "rails-assets-bootstrap", "~> 3.4"
-  gem "rails-assets-bootstrap-material-design", "~> 0.3.0"
-  gem "rails-assets-knockout"
-end
 
 # Rails i18n
 gem "rails-i18n", "~> 6.0.0"
