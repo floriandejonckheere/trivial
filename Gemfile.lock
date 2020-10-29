@@ -257,7 +257,7 @@ DEPENDENCIES
   puma
   rails (= 6.0)
   rails-assets-arrive!
-  rails-assets-bootstrap (~> 3)!
+  rails-assets-bootstrap (~> 3.4)!
   rails-assets-bootstrap-material-design (~> 0.3.0)!
   rails-assets-knockout!
   rails-i18n (~> 6.0.0)
