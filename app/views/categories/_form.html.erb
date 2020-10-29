@@ -17,7 +17,7 @@
   <div class="form-group">
     <small><%= t('color').capitalize %></small>
     <div>
-      <% Category.colors.each do |c| %>
+      <% Category::COLORS.each do |c| %>
         <div class="color-box withripple well-material-<%= c %>" data-toggle="tooltip" title="<%= t(c).capitalize %>">
           <%= f.radio_button :color, c %>
           <div class="radio-label radio-label-inactive mdi-action-done"></div>
