@@ -9,7 +9,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 source "https://rails-assets.org" do
   gem "rails-assets-arrive"
-  gem "rails-assets-bootstrap", "~> 4"
+  gem "rails-assets-bootstrap", "~> 3"
   gem "rails-assets-bootstrap-material-design", "~> 0.3.0"
   gem "rails-assets-knockout"
 end
