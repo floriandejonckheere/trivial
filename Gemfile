@@ -28,6 +28,9 @@ gem "jbuilder"
 # Use PostgreSQL as database
 gem "pg"
 
+# Use Devise as authentication framework
+gem "devise"
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
