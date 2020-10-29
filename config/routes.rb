@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  devise_for :users
+
   resources :cardsets do
     resources :cards, except: [:index, :show]
 
@@ -15,6 +17,9 @@ end
 # == Route Map
 #
 #               Prefix Verb   URI Pattern                                    Controller#Action
+#     new_user_session GET    /users/sign_in(.:format)                       devise/sessions#new
+#         user_session POST   /users/sign_in(.:format)                       devise/sessions#create
+# destroy_user_session DELETE /users/sign_out(.:format)                      devise/sessions#destroy
 #        cardset_cards POST   /cardsets/:cardset_id/cards(.:format)          cards#create
 #     new_cardset_card GET    /cardsets/:cardset_id/cards/new(.:format)      cards#new
 #    edit_cardset_card GET    /cardsets/:cardset_id/cards/:id/edit(.:format) cards#edit
