@@ -8,7 +8,8 @@ class CategoriesController < ApplicationController
   end
 
   def create
-    @category = Category.new(params[:category].permit(:title, :color))
+    @category = Category.new(category_params)
+
     if @category.save
       redirect_to categories_path
     else
@@ -17,13 +18,13 @@ class CategoriesController < ApplicationController
   end
 
   def edit
-    @category = Category.find(params[:id])
+    @category = category
   end
 
   def update
-    @category = Category.find(params[:id])
+    @category = category
 
-    if @category.update(params[:category].permit(:title, :color))
+    if @category.update(category_params)
       redirect_to categories_path
     else
       render "edit"
@@ -31,9 +32,21 @@ class CategoriesController < ApplicationController
   end
 
   def destroy
-    @category = Category.find(params[:id])
+    @category = category
     @category.destroy
 
     redirect_to categories_path
+  end
+
+  private
+
+  def category_params
+    params
+      .require(:category)
+      .permit(:title, :color)
+  end
+
+  def category
+    @category ||= Category.find(params[:id])
   end
 end

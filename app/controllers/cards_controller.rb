@@ -3,13 +3,13 @@
 class CardsController < ApplicationController
   def new
     @card = Card.new
-    @cardset = Cardset.find(params[:cardset_id])
+    @cardset = cardset
   end
 
   def create
-    @card = Card.new(params[:card].permit(:question, :answer, :category_id))
-    @cardset = Cardset.find(params[:cardset_id])
-    @card.assign_attributes(cardset_id: @cardset.id)
+    @card = Card.new(card_params.merge(cardset: cardset))
+    @cardset = cardset
+
     if @card.save
       redirect_to cardset_path(@cardset)
     else
@@ -18,15 +18,15 @@ class CardsController < ApplicationController
   end
 
   def edit
-    @card = Card.find(params[:id])
-    @cardset = Cardset.find(params[:cardset_id])
+    @card = card
+    @cardset = cardset
   end
 
   def update
-    @card = Card.find(params[:id])
-    @cardset = Cardset.find(params[:cardset_id])
+    @card = card
+    @cardset = cardset
 
-    if @card.update(params[:card].permit(:question, :answer, :category_id, :cardset_id, :visible))
+    if @card.update(card_params)
       redirect_to cardset_path(@cardset)
     else
       render "edit"
@@ -34,25 +34,27 @@ class CardsController < ApplicationController
   end
 
   def destroy
-    @card = Card.find(params[:id])
-    @cardset = Cardset.find(params[:cardset_id])
+    @card = card
+    @cardset = cardset
 
     @card.destroy
 
     redirect_to cardset_path(@cardset)
   end
 
-  def toggle_visible
-    @card = Card.find(params[:id])
-    @card.toggle(:visible)
-    @card.save!
-    render nothing: true
+  private
+
+  def card_params
+    params
+      .require(:card)
+      .permit(:question, :answer, :category_id)
   end
 
-  def set_visible
-    @card = Card.find(params[:id])
+  def card
+    @card ||= Card.find(params[:id])
+  end
 
-    @card.update(params[:card].permit(:visible))
-    render nothing: true
+  def cardset
+    @cardset ||= Cardset.find(params[:cardset_id])
   end
 end

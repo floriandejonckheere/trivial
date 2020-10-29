@@ -8,7 +8,8 @@ class CardsetsController < ApplicationController
   end
 
   def create
-    @cardset = Cardset.new(params[:cardset].permit(:title))
+    @cardset = Cardset.new(cardset_params)
+
     if @cardset.save
       redirect_to cardsets_path
     else
@@ -17,13 +18,13 @@ class CardsetsController < ApplicationController
   end
 
   def edit
-    @cardset = Cardset.find(params[:id])
+    @cardset = cardset
   end
 
   def update
-    @cardset = Cardset.find(params[:id])
+    @cardset = cardset
 
-    if @cardset.update(params[:cardset].permit(:title))
+    if @cardset.update(cardset_params)
       redirect_to cardsets_path
     else
       render "edit"
@@ -31,21 +32,25 @@ class CardsetsController < ApplicationController
   end
 
   def destroy
-    @cardset = Cardset.find(params[:id])
+    @cardset = cardset
     @cardset.destroy
 
     redirect_to cardsets_path
   end
 
   def show
-    @cardset = Cardset.find(params[:id])
+    @cardset = cardset
   end
 
-  def toggle_visible
-    @cards = Cardset.find(params[:cardset_id]).cards.where(category: params[:id])
-    @cards.each do |card|
-      card.update!(visible: true)
-    end
-    render nothing: true
+  private
+
+  def cardset_params
+    params
+      .require(:cardset)
+      .permit(:title)
+  end
+
+  def cardset
+    @cardset ||= Cardset.find(params[:id])
   end
 end
