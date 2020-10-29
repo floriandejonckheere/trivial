@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class CardsController < ApplicationController
+  before_action :authenticate_user!
+
   def new
     @card = Card.new
     @cardset = cardset
