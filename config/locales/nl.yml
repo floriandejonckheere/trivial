@@ -14,19 +14,20 @@ nl:
   title_new_category: Nieuwe categorie
   title_add_card: Nieuwe kaart
 
+  title_play: Spelen
   title_cardsets: Kaartspellen
   title_categories: Categorieën
 
   title_nocategories: Geen categorieën
-  text_nocategories: Je hebt nog geen categorieën gecreēerd
+  text_nocategories: Er zijn nog geen categorieën gecreēerd
   link_nocategories: Creëer een nieuwe categorie
 
   title_nocardsets: Geen kaartspellen
-  text_nocardsets: Je hebt nog geen kaartspellen gecreëerd
+  text_nocardsets: Er zijn nog geen kaartspellen gecreëerd
   link_nocardsets: Creëer een nieuw kaartspel
 
   title_nocards: Geen kaarten
-  text_nocards: Je hebt nog geen kaarten gecreëerd
+  text_nocards: Er zijn nog geen kaarten gecreëerd
   link_nocards:  Creëer een nieuwe kaart
 
   category_errortext: kan de categorie niet opslaan
@@ -46,6 +47,7 @@ nl:
   action_update: Opslaan
   action_delete: Verwijderen
   action_answer: Toon antwoord
+  action_play: Spelen
 
   cards_remaining: kaarten resterend
 

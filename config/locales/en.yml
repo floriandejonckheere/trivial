@@ -14,15 +14,16 @@ en:
   title_new_category: New category
   title_add_card: New card
 
+  title_play: Play
   title_cardsets: Cardsets
   title_categories: Categories
 
   title_nocategories: No categories
-  text_nocategories: You have not created any categories yet.
+  text_nocategories: No categories have been created yet
   link_nocategories: Create a new category
 
   title_nocardsets: No cardsets
-  text_nocardsets: You have not created any cardsets yet.
+  text_nocardsets: No cardsets have been created yet
   link_nocardsets: Create a new cardset
 
   title_nocards: No cards
@@ -46,6 +47,7 @@ en:
   action_update: Update
   action_delete: Delete
   action_answer: Show answer
+  action_play: Play
 
   cards_remaining: remaining cards
 

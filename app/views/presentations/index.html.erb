@@ -1,0 +1,25 @@
+<div class="row row-animated">
+  <div class="col-md-8 col-md-offset-2">
+    <h2 class="list-title"><%= t('title_play') %></h2>
+    <hr>
+    <% if Cardset.any? %>
+      <div class="row">
+        <% Cardset.all.each do |cardset| %>
+          <div class="col-sm-6">
+            <div class="well text-default well-material-white">
+              <div class="panel-body text-center">
+                <h4><%= cardset.title %></h4>
+                <%= link_to t('action_play'), cardset_presentation_path(cardset_id: cardset.id), :class => "btn btn-flat btn-xs" %>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    <% else %>
+      <div class="alert alert-warning">
+        <h4><%= t('title_nocategories') %></h4>
+        <p><%= t('text_nocategories') %>
+      </div>
+    <% end %>
+  </div>
+</div>

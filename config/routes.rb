@@ -6,8 +6,10 @@ Rails.application.routes.draw do
   resources :cardsets do
     resources :cards, except: [:index, :show]
 
-    get :presentation, to: "presentation#show"
+    get :presentation, to: "presentations#show"
   end
+
+  resources :presentations, only: :index
 
   resources :categories, except: :show
 
@@ -35,6 +37,7 @@ end
 #                      PATCH  /cardsets/:id(.:format)                        cardsets#update
 #                      PUT    /cardsets/:id(.:format)                        cardsets#update
 #                      DELETE /cardsets/:id(.:format)                        cardsets#destroy
+#        presentations GET    /presentations(.:format)                       presentations#index
 #           categories GET    /categories(.:format)                          categories#index
 #                      POST   /categories(.:format)                          categories#create
 #         new_category GET    /categories/new(.:format)                      categories#new
