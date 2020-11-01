@@ -2,7 +2,7 @@ version: "3.7"
 
 services:
   app:
-    image: docker.pkg.github.com/floriandejonckheere/trivial/trivial-app:v4.0.0
+    image: ghcr.io/floriandejonckheere/trivial-app:v4.0.0
     logging:
       driver: "json-file"
       options:
