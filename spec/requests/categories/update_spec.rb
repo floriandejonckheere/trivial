@@ -6,6 +6,10 @@ RSpec.describe "Create category" do
   let(:category) { create(:category) }
   let(:params) { { category: { title: "My category", color: "teal" } } }
 
+  let(:user) { create(:user) }
+
+  before { sign_in user }
+
   it { is_expected.to redirect_to categories_path }
 
   def update_category(id, params = nil)

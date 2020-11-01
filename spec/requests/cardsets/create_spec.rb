@@ -5,6 +5,10 @@ RSpec.describe "Create cardset" do
 
   let(:params) { { cardset: { title: "My cardset" } } }
 
+  let(:user) { create(:user) }
+
+  before { sign_in user }
+
   it { is_expected.to redirect_to cardsets_path }
 
   def create_cardset(params = nil)

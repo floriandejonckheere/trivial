@@ -6,6 +6,10 @@ RSpec.describe "Create card" do
   let(:card) { create(:card) }
   let(:params) { { card: { question: "My question" } } }
 
+  let(:user) { create(:user) }
+
+  before { sign_in user }
+
   it { is_expected.to redirect_to cardset_path(card.cardset.id) }
 
   def update_card(id, cardset_id, params = nil)
