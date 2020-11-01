@@ -86,6 +86,39 @@ git push origin v1.0.0
 
 ## Deployment
 
+**Initial deployment**
+
+```sh
+# SSH into the server
+ssh root@myserver.com
+
+# Create a user
+useradd -d /data/apps/trivial -G ssh -G docker -m -s /bin/bash trivial
+su - trivial
+
+# Create SSH keypair
+myserver$ mkdir ~/.ssh/
+ssh-keygen -f ~/.ssh/trivial-deployment-key -b 4096 -C "Trivial deployment key"
+cp ~/.ssh/trivial-deployment-key.pub ~/.ssh/authorized_keys
+
+# Initialize the database
+docker exec -ti thalarion_postgres_1 psql -U postgres -c "CREATE ROLE trivial WITH ENCRYPTED PASSWORD trivial LOGIN;"
+docker exec -ti thalarion_postgres_1 psql -U postgres -c "CREATE DATABASE trivial OWNER trivial;"
+
+# Logout, but don't forget to copy over the private key to your local machine 
+logout
+logout
+
+# Copy and edit environment file
+cp .env.development ops/.env.production.local
+edit ops/.env.production.local
+scp -i ~/.ssh/trivial-deployment-key.pub ops/.env.production.local /data/apps/trivial/production.env
+```
+
+Additionally, set `DEPLOY_SSH_KEY`, `DEPLOY_SSH_HOST` and `DEPLOY_SSH_USER` as Github Actions secrets.
+
+**Subsequent deployments**
+
 Ensure the images have been built and are available in the container registry.
 Apply your changes in `ops/docker-compose.yml`.
 Update the `production` tag to the correct commit and push it to Github
