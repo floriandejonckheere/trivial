@@ -19,6 +19,7 @@ Layout/LineLength:
     - db/seeds/**/*.rb
     - lib/tasks/**/*.rake
     - config/routes.rb
+    - config/initializers/devise.rb
 
 Layout/MultilineMethodCallIndentation:
   EnforcedStyle: indented
