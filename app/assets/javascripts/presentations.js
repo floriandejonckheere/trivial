@@ -1,8 +1,8 @@
-var shuffle = function(array){
+var shuffle = function (array) {
   var m = array.length, t, i;
 
   // While there remain elements to shuffle
-  while(m){
+  while (m) {
 
     // Pick a remaining element
     i = Math.floor(Math.random() * m--);
@@ -16,17 +16,16 @@ var shuffle = function(array){
   return array;
 };
 
-$(function(){
-
+$(function () {
   $('.overlay-card').fadeOut();
 
-  $('#btn-back').click(function(){
+  $('#btn-back').click(function () {
     $('.overlay-card').fadeOut();
   });
 
-  $(document).on('keydown',function(evt) {
+  $(document).on('keydown', function (evt) {
     if (evt.keyCode == 27) {
-     $('.overlay-card').fadeOut();
+      $('.overlay-card').fadeOut();
     }
   });
 
@@ -35,19 +34,19 @@ $(function(){
    *
    * */
 
-  // Category Model
-  var Category = function(props){
-    var self = this;
+    // Category Model
+  var Category = function (props) {
+      var self = this;
 
-    self.id = props.id;
-    self.title = props.title;
-    self.color = 'well-material-' + props.color;
-    self.cards = ko.observableArray();
-    self.current = ko.observable(0);
-  };
+      self.id = props.id;
+      self.title = props.title;
+      self.color = 'well-material-' + props.color;
+      self.cards = ko.observableArray();
+      self.current = ko.observable(0);
+    };
 
   // Card Model
-  var Card = function(props){
+  var Card = function (props) {
     var self = this;
 
     self.id = props.id;
@@ -59,9 +58,9 @@ $(function(){
   // ViewModel for the document (aka the categories)
   var viewModel = {
     categories: [],
-    showCard: function(category){
-      if(category.current() == category.cards().length){
-        if(confirm('You have seen all the cards. Do you want to reshuffle?')){
+    showCard: function (category) {
+      if (category.current() == category.cards().length) {
+        if (confirm('You have seen all the cards. Do you want to reshuffle?')) {
           var arr = category.cards();
           shuffle(arr);
           category.cards(arr);
@@ -81,10 +80,10 @@ $(function(){
       question: 'Dummy question',
       answer: 'Dummy answer'
     }),
-    showAnswer: function(){
+    showAnswer: function () {
       $('#text-answer').slideToggle();
-      $.grep(viewModel.categories, function(val){
-        if(val.id == cardViewModel.card().category){
+      $.grep(viewModel.categories, function (val) {
+        if (val.id == cardViewModel.card().category) {
           val.current(val.current() + 1);
         }
       });
@@ -98,14 +97,14 @@ $(function(){
    * */
 
   var width = 0;
-  var progress = function(amount){
+  var progress = function (amount) {
     width = Math.min(width + amount, 100);
     $('#progress-loading').css('width', width + '%');
   };
 
   $.when(
-    $.getJSON('/api/categories', function(data){
-      $.each(data.categories, function(idx, val){
+    $.getJSON('/api/categories', function (data) {
+      $.each(data.categories, function (idx, val) {
         viewModel.categories.push(new Category({
           id: val.id,
           title: val.title,
@@ -118,10 +117,10 @@ $(function(){
     }),
 
     // Fetch cards
-    $.getJSON('/api/cardsets/' + $('#cardset_id').val(), function(data){
-      $.each(data.cards, function(idx, val){
-        $.grep(viewModel.categories, function(el, idx){
-          if(el.id == val.category){
+    $.getJSON('/api/cardsets/' + $('#cardset_id').val(), function (data) {
+      $.each(data.cards, function (idx, val) {
+        $.grep(viewModel.categories, function (el, idx) {
+          if (el.id == val.category) {
             el.cards.push(ko.observable(new Card({
               id: val.id,
               question: val.question.replace(/\n/g, '<br>'),
@@ -135,17 +134,17 @@ $(function(){
       });
 
       // Shuffle cards
-      $.each(viewModel.categories, function(idx, val){
+      $.each(viewModel.categories, function (idx, val) {
         var arr = val.cards();
         shuffle(arr);
         val.cards(arr);
       });
     })
-  ).done(function(){
+  ).done(function () {
     $('.overlay').fadeOut();
     ko.applyBindings(viewModel, $('main')[0]);
     ko.applyBindings(cardViewModel, $('.overlay-card')[0]);
-  }).fail(function(data){
+  }).fail(function (data) {
     alert('Request failed: ' + data.responseText);
   });
 });

@@ -20,7 +20,7 @@
 //= require jquery.dropdown
 //= require knockout
 
-$(document).ready(function(){
+$(document).ready(function () {
   $.material.init();
   $(".select").dropdown();
   $('[data-toggle="tooltip"]').tooltip();
