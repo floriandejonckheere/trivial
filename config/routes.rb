@@ -13,7 +13,7 @@ Rails.application.routes.draw do
 
   resources :categories, except: :show
 
-  root to: redirect("/cardsets")
+  root to: redirect("/presentations")
 end
 
 # == Route Map
@@ -28,7 +28,7 @@ end
 #         cardset_card PATCH  /cardsets/:cardset_id/cards/:id(.:format)      cards#update
 #                      PUT    /cardsets/:cardset_id/cards/:id(.:format)      cards#update
 #                      DELETE /cardsets/:cardset_id/cards/:id(.:format)      cards#destroy
-# cardset_presentation GET    /cardsets/:cardset_id/presentation(.:format)   presentation#show
+# cardset_presentation GET    /cardsets/:cardset_id/presentation(.:format)   presentations#show
 #             cardsets GET    /cardsets(.:format)                            cardsets#index
 #                      POST   /cardsets(.:format)                            cardsets#create
 #          new_cardset GET    /cardsets/new(.:format)                        cardsets#new
@@ -45,4 +45,4 @@ end
 #             category PATCH  /categories/:id(.:format)                      categories#update
 #                      PUT    /categories/:id(.:format)                      categories#update
 #                      DELETE /categories/:id(.:format)                      categories#destroy
-#                 root GET    /                                              redirect(301, /cardsets)
+#                 root GET    /                                              redirect(301, /presentations)
