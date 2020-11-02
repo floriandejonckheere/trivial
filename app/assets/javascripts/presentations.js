@@ -104,7 +104,7 @@ $(function(){
   };
 
   $.when(
-    $.getJSON('/categories', function(data){
+    $.getJSON('/api/categories', function(data){
       $.each(data.categories, function(idx, val){
         viewModel.categories.push(new Category({
           id: val.id,
@@ -118,7 +118,7 @@ $(function(){
     }),
 
     // Fetch cards
-    $.getJSON('/cardsets/' + $('#cardset_id').val(), function(data){
+    $.getJSON('/api/cardsets/' + $('#cardset_id').val(), function(data){
       $.each(data.cards, function(idx, val){
         $.grep(viewModel.categories, function(el, idx){
           if(el.id == val.category){
@@ -145,5 +145,7 @@ $(function(){
     $('.overlay').fadeOut();
     ko.applyBindings(viewModel, $('main')[0]);
     ko.applyBindings(cardViewModel, $('.overlay-card')[0]);
+  }).fail(function(data){
+    alert('Request failed: ' + data.responseText);
   });
 });

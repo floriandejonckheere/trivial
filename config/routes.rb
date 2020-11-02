@@ -10,8 +10,12 @@ Rails.application.routes.draw do
   end
 
   resources :presentations, only: :index
-
   resources :categories, except: :show
+
+  namespace :api do
+    resources :cardsets, only: :show
+    resources :categories, only: :index
+  end
 
   root to: redirect("/presentations")
 end
@@ -45,4 +49,6 @@ end
 #             category PATCH  /categories/:id(.:format)                      categories#update
 #                      PUT    /categories/:id(.:format)                      categories#update
 #                      DELETE /categories/:id(.:format)                      categories#destroy
+#          api_cardset GET    /api/cardsets/:id(.:format)                    api/cardsets#show
+#       api_categories GET    /api/categories(.:format)                      api/categories#index
 #                 root GET    /                                              redirect(301, /presentations)
