@@ -2,7 +2,7 @@ version: "3.7"
 
 services:
   app:
-    image: ghcr.io/floriandejonckheere/trivial-app:v4.0.0
+    image: ghcr.io/floriandejonckheere/trivial-app:v4.0.1
     logging:
       driver: "json-file"
       options:
