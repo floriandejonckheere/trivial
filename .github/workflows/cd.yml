@@ -48,7 +48,7 @@ jobs:
             docker login https://ghcr.io -u ${GITHUB_USER} -p ${GITHUB_TOKEN}
             docker-compose pull --quiet
             echo "Running migrations"
-            docker-compose run --rm app rails db:migrate
+            docker-compose run --rm trivial rails db:migrate
             echo "Recreating containers"
             docker-compose up --detach --remove-orphans
 
