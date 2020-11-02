@@ -48,6 +48,7 @@ nl:
   action_delete: Verwijderen
   action_answer: Toon antwoord
   action_play: Spelen
+  action_signin: Log in
 
   cards_remaining: kaarten resterend
 

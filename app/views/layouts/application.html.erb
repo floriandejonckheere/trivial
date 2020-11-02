@@ -28,6 +28,8 @@
     <ul class="nav navbar-nav navbar-right">
       <% if user_signed_in? %>
         <li><%= link_to current_user.name, destroy_user_session_path, method: :delete %></li>
+      <% else %>
+        <li><%= link_to t('action_signin'), new_user_session_path %></li>
       <% end %>
     </ul>
   </div>

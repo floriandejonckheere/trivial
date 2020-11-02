@@ -48,6 +48,7 @@ en:
   action_delete: Delete
   action_answer: Show answer
   action_play: Play
+  action_signin: Sign in
 
   cards_remaining: remaining cards
 
