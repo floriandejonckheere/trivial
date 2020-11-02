@@ -67,6 +67,7 @@ Github secrets for continuous deployment:
 - `DEPLOY_SSH_HOST`
 - `DEPLOY_SSH_USER`
 - `DEPLOY_SSH_KEY`
+- `REGISTRY_TOKEN` (needed for [Github Container Registry](https://docs.github.com/en/packages/getting-started-with-github-container-registry/migrating-to-github-container-registry-for-docker-images))
 
 ## Releasing
 
