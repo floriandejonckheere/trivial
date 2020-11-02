@@ -60,6 +60,20 @@ jobs:
           state: "success"
           deployment_id: ${{ steps.deployment.outputs.deployment_id }}
 
+      - name: Send email (success)
+        if: success()
+        uses: dawidd6/action-send-mail@v2
+        with:
+          server_address: smtp.gmail.com
+          server_port: 465
+          username: ${{ secrets.SMTP_USERNAME }}
+          password: ${{ secrets.SMTP_PASSWORD }}
+          subject: Deploy for ${{ github.event.repository.name }} succeeded
+          body: The deployment with id ${{ steps.deployment.outputs.deployment_id }} of ${{ github.event.repository.name }} completed successfully!
+          from: ${{ secrets.SMTP_FROM }}
+          to: ${{ secrets.SMTP_TO }}
+          content_type: text/hml
+
       - name: Update deployment status (failure)
         if: failure()
         uses: chrnorm/deployment-status@releases/v1
@@ -67,3 +81,17 @@ jobs:
           token: "${{ github.token }}"
           state: "failure"
           deployment_id: ${{ steps.deployment.outputs.deployment_id }}
+
+      - name: Send email (failure)
+        if: failure()
+        uses: dawidd6/action-send-mail@v2
+        with:
+          server_address: smtp.gmail.com
+          server_port: 465
+          username: ${{ secrets.SMTP_USERNAME }}
+          password: ${{ secrets.SMTP_PASSWORD }}
+          subject: Deploy for ${{ github.event.repository.name }} failed
+          body: The deployment with id ${{ steps.deployment.outputs.deployment_id }} of ${{ github.event.repository.name }} failed!
+          from: ${{ secrets.SMTP_FROM }}
+          to: ${{ secrets.SMTP_TO }}
+          content_type: text/hml
